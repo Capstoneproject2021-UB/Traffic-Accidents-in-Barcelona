@@ -1,7 +1,7 @@
 has been made (en el marco de o como parte de) 
 
 
-# Traffic accidents in Barcelona: data analysis and modelling
+#  <div align="center"> Traffic accidents in Barcelona: data analysis and modelling  </p>
 
 The following article and its related repository are part of the Capstone Project for the Data Science and Big Data Postgraduate Course at Universitat de Barcelona, 2020-2021.
 
