@@ -1,8 +1,6 @@
-HOLAAAAAAAAAAAAAAAAAAAAAAAA
 
+# Traffic accidents in Barcelona: data analysis and modelling
 
-
-# traffic_accidents_barcelona
 Capstone Project - Data Science and Big Data Postgraduate Course at Universitat de Barcelona, 2020-21
 
 
