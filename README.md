@@ -31,7 +31,7 @@ Para "alimentar el modelo", hemos usado el dataset nro 3 - **"Accidents managed 
 Por otro lado, en pos de hacer un análisis más abarcativo respecto de la accidentalidad en la ciudad y sus consecuencias, hemos generado una serie de graficos estadísticos sobre la evolución de la accidentalidad, victimas, barrios con mayor accidentalidad, etc. Este análisis se encuentra en el notebook 
 **2. Data analysis and exploration**. En este caso, hemos utilizado el dataframe mencionado anteriomente junto con el dataset: **People involved in accidents managed by the Police in the city of Barcelona**.
 
-Por lo tanto, el proyecto se encuentra organizado de la siguiente forma:
+Este trabajo, se encuentra organizado de la siguiente forma:
 
 * Un fichero con todos los dataframes de 2010 a 2020, correspondientes a los 2 dataset utilizados.
 * Un notebook llamado *ETL*, el cual homogeiza la información y une los dataframes en 2 únicos archivos.
