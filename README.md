@@ -34,7 +34,7 @@ Por otro lado, en pos de hacer un análisis más abarcativo respecto de la accid
 Este trabajo, se encuentra organizado de la siguiente forma:
 
 * Un fichero con todos los dataframes de 2010 a 2020, correspondientes a los 2 dataset utilizados.
-* Un notebook llamado *ETL*, el cual homogeiza la información y une los dataframes en 2 únicos archivos.
+* Un notebook llamado *ETL*, el cual homogeneiza la información y une los dataframes en 2 únicos archivos.
 * Un notebook llamado *Data analysis and exploration*. con un análisis contextual sobre la accidentalidad entre 2010 a 2020 en la Ciudad.
 * Un notebook llamado *Modelos* 
 
