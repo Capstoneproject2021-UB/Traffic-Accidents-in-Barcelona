@@ -1,7 +1,4 @@
 
-(WORK ON PROGRESS)
-
-
 #  <div align="center"> Traffic accidents in Barcelona: data analysis and modelling  </p>
 
 *The following article and its related repository are part of the Capstone Project for the Data Science and Big Data Postgraduate Course at Universitat de Barcelona, 2020-2021.*
@@ -37,6 +34,12 @@ Este trabajo, se encuentra organizado de la siguiente forma:
 * Un notebook llamado *ETL*, el cual homogeneiza la información y une los dataframes en 2 únicos archivos.
 * Un notebook llamado *Data analysis and exploration*. con un análisis contextual sobre la accidentalidad entre 2010 a 2020 en la Ciudad.
 * Un notebook llamado *Modelos* 
+
+
+
+(WORK ON PROGRESS) 
+(WORK ON PROGRESS) 
+(WORK ON PROGRESS)
 
 ## Dataset
   a)
