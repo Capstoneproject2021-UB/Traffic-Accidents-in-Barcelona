@@ -23,7 +23,7 @@ Dicha web, cuenta con un total de 5 diferentes datasets relacionados con acciden
 * Description of the accidents' handled by the police in the city of Barcelona causality 
 * Accidents managed by the Guàrdia Urbana in the city of Barcelona according to type
 
-Para "alimentar el modelo", hemos usado el dataset nro 3 - **"Accidents managed by the local police in the city of Barcelona"**, con informacion desde el año 2010 a 2020. Cabe aclarar que, dado que solo el dataframe correspondiente al año 2020 contiene accidentes generados durante la pandemia de COVID-19, por lo que nos hemos contactado con el Ayuntamiento de la Ciudad para solicitar información sobre accidentalidad durante 2021. Pero al día de hoy no hemos recibido dicha información.
+Para "alimentar el modelo", hemos usado el dataset nro 3 - **"Accidents managed by the local police in the city of Barcelona"**, con informacion desde el año 2010 a 2020. Cabe aclarar que solo el dataframe correspondiente al año 2020 contiene accidentes generados durante la pandemia de COVID-19, con lo cual nos hemos contactado con el Ayuntamiento de la Ciudad para solicitar información sobre accidentalidad durante 2021. Al día de hoy no hemos recibido dicha información.
 
 Por otro lado, en pos de hacer un análisis más abarcativo respecto de la accidentalidad en la ciudad y sus consecuencias, hemos generado una serie de graficos estadísticos sobre la evolución de la accidentalidad, victimas, barrios con mayor accidentalidad, etc. Este análisis se encuentra en el notebook 
 **2. Data analysis and exploration**. En este caso, hemos utilizado el dataframe mencionado anteriomente junto con el dataset: **People involved in accidents managed by the Police in the city of Barcelona**.
