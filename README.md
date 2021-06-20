@@ -23,9 +23,8 @@ De acuerdo a la Organización Mundial de la Salud, como consecuencia de accident
 <br>
 
 En el marco de la Union Europea, en la actualidad se producen por año alrededor de 49 muertes por millón de habitantes, frente a las 174 por millón en el mundo.
-Si bien se trata del continente con menor siniestralidad en carreteras en el mundo, el obejtivo para 2030 es reducir a la mitad el número de muertes y lesiones graves.
-
-En el año 2020, se han visto reducidos los niveles de siniestralidad en todo el continente, y según la Comisión Europea, "el menor volumen de tráfico como consecuencia de la pandemia sanitaria ha tenido un impacto directo, aunque no medible, en esta bajada de la siniestralidad vial". En el caso de España, se encuentra entre los 4 primeros países europeos con menor número de muertes (29 por millón).
+Si bien se trata del continente con menor siniestralidad en carreteras en el mundo, el obejtivo para 2030 es reducir a la mitad el número de muertes y lesiones graves. 
+<br>En el año 2020, se han visto reducidos los niveles de siniestralidad en todo el continente, y según la Comisión Europea, "el menor volumen de tráfico como consecuencia de la pandemia sanitaria ha tenido un impacto directo, aunque no medible, en esta bajada de la siniestralidad vial". En el caso de España, se encuentra entre los 4 primeros países europeos con menor número de muertes (29 por millón).
 
 <br>
 
