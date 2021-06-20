@@ -147,10 +147,11 @@ df_accidents_2020.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripc
 ...
 ```
 
+<br>
 
 > Como puede verse, primero leemos las 10 entradas de datos para luego homogeneizar la informacion contenida quitando simbolos y eliminando columnas con informacion que no se encuentra en todo el conjunto de dataframes.
 
-
+<br>
 
 ```
 # Concat all columns now that the format is standard
@@ -167,9 +168,72 @@ df_accidents_union_all.to_csv('./accidents_homogenized_2010to2020.csv', index=Fa
 
 print("{0} INFO: Ending ETL visualization".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S')))
 ```
+<br>
 
-> Continuacion con la estandarización de los datos. Finalmente, unimos las columnas de todos los dataframes y generamos un único archivo csv mo puede verse, primero leemos las 10 entradas de datos para luego homogeneizar la informacion contenida quitando simbolos y eliminando columnas con informacion que no se encuentra en todo el conjunto de dataframes.
+> Continuamos con la estandarización de los datos, y finalmente unimos las columnas de todos los dataframes. Generando así un único archivo csv denominado *df_accidents_union_all*
 
+<br>
+
+```
+# Download Covid data restrictions from API
+def f_read_covid():
+    try:
+        # This part needs to be launch only one time, if we had more data on accidents we could update it more often
+        """
+        df_covid = pd.read_csv('https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv')
+        df_covid.drop_duplicates(keep='first', inplace=True)
+        if 'ESP' in df_covid.CountryCode.unique():
+            df_covid = df_covid[df_covid.CountryCode == 'ESP']
+            df_covid.to_csv('./covid_feature.csv', index=False, header=True, encoding='utf-8')
+        """
+        # If it was already generated we can simply read the file.
+        df_covid = pd.read_csv('./covid_feature.csv', delimiter=',', encoding='utf-8')
+    except Exception as e:
+        df_covid = None
+        print("{0} ERROR: retrieving covid data: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S'), e))
+
+    # We took the columns only for the most relevant restrictions
+    col = ['Date', 'C2_Workplace closing', 'C3_Cancel public events',
+           'C4_Restrictions on gatherings', 'C6_Stay at home requirements',
+           'C7_Restrictions on internal movement']
+
+    df_covid = df_covid[col]
+
+    return df_covid
+
+
+# Generate the feature in a scale from 0 to 10
+# being 0 before Covid was discovered and 10 the highest restriction home quarantine
+def f_generate_covid_feature(p_df_covid):
+    print("{0} INFO: Function generate COVID-19 features".format(datetime.datetime.now().strftime(
+        '%d/%m/%Y-%H:%M:%S')))
+    p_df_covid = p_df_covid.dropna().copy()
+    # Generate the final value giving more strength to restrictions affecting mobility
+    p_df_covid['COVID_VALUE'] = p_df_covid['C2_Workplace closing'] / 3 + p_df_covid['C3_Cancel public events'] / 6 + p_df_covid['C4_Restrictions on gatherings'] / 6 + p_df_covid['C6_Stay at home requirements'] + p_df_covid['C7_Restrictions on internal movement']
+    p_df_covid['COVID'] = 0
+
+    min_val = p_df_covid[p_df_covid.COVID_VALUE != 0].COVID_VALUE.min()
+    max_val = p_df_covid.COVID_VALUE.max()
+    param = (max_val - min_val) / 9
+    for i in range(9):
+        p_df_covid.loc[
+            (p_df_covid.COVID_VALUE >= min_val + i * param) & (p_df_covid.COVID_VALUE < min_val + (i + 1) * param), 'COVID'] = i + 1
+    p_df_covid.loc[p_df_covid.COVID_VALUE == max_val, 'COVID'] = 10
+    p_df_covid.loc[(p_df_covid.COVID_VALUE == 0) & (p_df_covid.Date < int('20200315')), 'COVID'] = 0
+
+    p_df_covid.drop(columns=['COVID_VALUE', 'C2_Workplace closing', 'C3_Cancel public events', 'C4_Restrictions on gatherings', 'C6_Stay at home requirements', 'C7_Restrictions on internal movement'], inplace=True)
+
+    return p_df_covid
+
+
+# Add covid feature
+df_feature_covid = f_read_covid()
+df_feature_covid = f_generate_covid_feature(df_feature_covid)
+
+```
+<br>
+
+> Continuamos con la estandarización de los datos, y finalmente unimos las columnas de todos los dataframes. Generando así un único archivo csv denominado *df_accidents_union_all*
 
 ## Analysis
  a) Data Exploration
