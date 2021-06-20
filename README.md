@@ -68,9 +68,89 @@ Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado 
 ### 1a) Data preprocessing 
 
  
- Tal y como hemos mencionado anteriomente, para este proyecto hemos utilizado 2 datasets relacionados con accidentes viales, que el ayuntamiento de Barcelona publica anualmente en el portal *Open data Barcelona*.
+ Para este proyecto hemos utilizado 2 datasets relacionados con accidentes viales, que el ayuntamiento de Barcelona publica anualmente en el portal *Open data Barcelona*. 
 
->  People involved in accidents managed by the Police in the city of Barcelona : *List of people who have been involved in an accident managed by the Police in the city of Barcelona have suffered some type of injury ( slightly wounded, serious injuries or death). It includes a description of the person ( driver, passenger or pedestrian), sex, age, vehicle associated person if the cause was pedestrian*
+* **People involved in accidents managed by the Police in the city of Barcelona**: *List of people who have been involved in an accident managed by the Police in the city of Barcelona have suffered some type of injury ( slightly wounded, serious injuries or death). It includes a description of the person ( driver, passenger or pedestrian), sex, age, vehicle associated person if the cause was pedestrian*
+
+* **Accidents managed by the local police in the city of Barcelona**: *List of accidents handled by the local police in the city of Barcelona. Incorporates the number of injuries by severity, the number of vehicles and the point of impact.*
+
+El primero es un registro con todas las personas que formaron parte en cada uno de los accidentes registrados. Por lo que podemos tener 1,2,3 o 4 filas correspondientes al mismo accidente. Todo depende del nómero de personas involucradas. Cada dataframe cuenta con 31 campos, entre los que se encuentran: fecha, barrio, descripción de la persona, edad, descripción del vehiculo involucrado, entre otros. La clave principal es el número de expediente.
+El segundo es un resumen del accidente ocurrido y sus consecuencias. Cada dataframe cuenta con 26 campos, siendo los más importantes para nuestro análisis: número de lesionados leves, graves y muertos. La clave principal es el número de expediente.
+
+Cada dataset posee un dataframe por año, iniciando el registro en el año 2010 y finalizando en 2020. Por lo que hemos trabajado con un total de 20 archivos.
+
+Ambos datasets se han utilizado para el análisis exploratorio, pero solo el segundo para la elaboración del modelo. 
+
+A continuación, veremos un resumen del preposesamiento realizado (incluyendo parte del codigo):
+
+
+```python
+import pandas as pd
+import numpy as np
+import datetime
+import unicodedata
+
+#############################################
+# First data entries, visualization purposes
+#############################################
+
+print("{0} INFO: Starting ETL visualization".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S')))
+
+# Read data entries
+df_accidents_2010 = pd.read_csv('Dataset/people_involved/2010_ACCIDENTS_PERSONES_GU_BCN_2010.csv', delimiter=',', encoding='latin1', decimal=".")
+df_accidents_2011 = pd.read_csv('Dataset/people_involved/2011_ACCIDENTS_PERSONES_GU_BCN_2011.csv', delimiter=',', encoding='latin1', decimal=".")
+df_accidents_2012 = pd.read_csv('Dataset/people_involved/2012_ACCIDENTS_PERSONES_GU_BCN_2012.csv', delimiter=',', encoding='latin1', decimal=".")
+df_accidents_2013 = pd.read_csv('Dataset/people_involved/2013_ACCIDENTS_PERSONES_GU_BCN_2013.csv', delimiter=',', encoding='latin1', decimal=".")
+df_accidents_2014 = pd.read_csv('Dataset/people_involved/2014_ACCIDENTS_PERSONES_GU_BCN_2014.csv', delimiter=',', encoding='latin1', decimal=".")
+df_accidents_2015 = pd.read_csv('Dataset/people_involved/2015_ACCIDENTS_PERSONES_GU_BCN_2015.csv', delimiter=',', encoding='latin1', decimal=".")
+df_accidents_2016 = pd.read_csv('Dataset/people_involved/2016_accidents_persones_gu_bcn.csv', delimiter=',', encoding='utf8', decimal=".")
+df_accidents_2017 = pd.read_csv('Dataset/people_involved/2017_accidents_persones_gu_bcn_.csv', delimiter=',', encoding='utf8', decimal=".")
+df_accidents_2018 = pd.read_csv('Dataset/people_involved/2018_accidents_persones_gu_bcn_.csv', delimiter=',', encoding='utf8', decimal=".")
+df_accidents_2019 = pd.read_csv('Dataset/people_involved/2019_accidents_persones_gu_bcn_.csv', delimiter=',', encoding='utf8', decimal=".")
+df_accidents_2020 = pd.read_csv('Dataset/people_involved/2020_accidents_persones_gu_bcn.csv', delimiter=',', encoding='utf8', decimal=".")
+
+# Prepare column names for homogenization
+df_accidents_2010.columns = df_accidents_2010.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '').str.replace('ú', 'u').str.replace("d'", '').str.replace('ó', 'o').str.replace('.', '').str.replace('_de_', '_')
+df_accidents_2011.columns = df_accidents_2011.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '').str.replace('ú', 'u').str.replace("d'", '').str.replace('ó', 'o').str.replace('.', '').str.replace('_de_', '_')
+df_accidents_2012.columns = df_accidents_2012.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '').str.replace('ú', 'u').str.replace("d'", '').str.replace('ó', 'o').str.replace('.', '').str.replace('_de_', '_')
+df_accidents_2013.columns = df_accidents_2013.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '').str.replace('ú', 'u').str.replace("d'", '').str.replace('ó', 'o').str.replace('.', '').str.replace('_de_', '_')
+df_accidents_2014.columns = df_accidents_2014.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '').str.replace('£', 'u').str.replace('¢', 'o').str.replace("d'", '').str.replace('.', '').str.replace('_de_', '_')
+df_accidents_2015.columns = df_accidents_2015.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '').str.replace('ú', 'u').str.replace("d'", '').str.replace('ó', 'o').str.replace('.', '').str.replace('_de_', '_')
+df_accidents_2016.columns = df_accidents_2016.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '')
+df_accidents_2017.columns = df_accidents_2017.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '').str.replace('__', '_')
+df_accidents_2018.columns = df_accidents_2018.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('(', '').str.replace(')', '').str.replace('__', '_')
+df_accidents_2019.columns = df_accidents_2019.columns.str.strip().str.replace(' ', '_').str.replace('(', '').str.replace(')', '').str.replace('Ă§', 'c').str.replace('ç', 'c').str.replace('ó', 'o').str.lower().str.replace('.1', '').str.replace('__', '_')
+df_accidents_2020.columns = df_accidents_2020.columns.str.strip().str.replace(' ', '_').str.replace('(', '').str.replace(')', '').str.replace('Ă§', 'c').str.replace('ç', 'c').str.replace('ó', 'o').str.lower().str.replace('__', '_')
+
+df_accidents_2010.rename(columns={'nk_any': 'any'}, inplace=True)
+df_accidents_2011.rename(columns={'nk_any': 'any'}, inplace=True)
+df_accidents_2012.rename(columns={'nk_any': 'any'}, inplace=True)
+df_accidents_2013.rename(columns={'nk_any': 'any'}, inplace=True)
+df_accidents_2014.rename(columns={'nk_any': 'any'}, inplace=True)
+df_accidents_2015.rename(columns={'nk_any': 'any'}, inplace=True)
+df_accidents_2019.rename(columns={'nk_any': 'any'}, inplace=True)
+df_accidents_2020.rename(columns={'nk_any': 'any'}, inplace=True)
+
+# Drop useless columns and columns not present in all the history
+df_accidents_2010.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal_caption', 'nom_carrer', 'codi_carrer', 'descripcio_victimitzacio'], inplace=True)
+df_accidents_2011.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal_caption', 'nom_carrer', 'codi_carrer', 'descripcio_victimitzacio'], inplace=True)
+df_accidents_2012.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal_caption', 'nom_carrer', 'codi_carrer', 'descripcio_victimitzacio'], inplace=True)
+df_accidents_2013.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal_caption', 'nom_carrer', 'codi_carrer', 'descripcio_victimitzacio'], inplace=True)
+df_accidents_2014.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'num_postal_caption', 'nom_carrer', 'codi_carrer', 'descripcio_victimitzacio'], inplace=True)
+df_accidents_2015.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'num_postal_caption', 'nom_carrer', 'codi_carrer', 'descripcio_victimitzacio'], inplace=True)
+df_accidents_2016.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal', 'nom_carrer', 'codi_carrer', 'descripcio_situacio', 'descripcio_victimitzacio', 'longitud', 'latitud'], inplace=True)
+df_accidents_2017.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal', 'nom_carrer', 'codi_carrer', 'descripcio_situacio', 'descripcio_victimitzacio', 'longitud', 'latitud'], inplace=True)
+df_accidents_2018.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal', 'nom_carrer', 'codi_carrer', 'descripcio_situacio', 'descripcio_victimitzacio', 'longitud', 'latitud'], inplace=True)
+df_accidents_2019.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal', 'codi_carrer', 'descripcio_victimitzacio', 'descripcio_lloc_atropellament_vianat', 'descripcio_motiu_desplacament_vianant', 'descripcio_motiu_desplacament_conductor', 'longitud', 'latitud'], inplace=True)
+df_accidents_2020.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal', 'nom_carrer', 'codi_carrer', 'descripcio_victimitzacio', 'descripcio_motiu_desplacament_vianant', 'descripcio_motiu_desplacament_conductor', 'longitud', 'latitud', 'descripcio_lloc_atropellament_vianat'], inplace=True)
+```
+
+
+
+El proceso que hemos hecho sobre los dataframes, puede sintetizarse de la siguiente forma:
+
+
+
 
 ## Analysis
  a) Data Exploration
