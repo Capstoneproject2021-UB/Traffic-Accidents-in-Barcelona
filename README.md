@@ -81,7 +81,7 @@ Cada dataset posee un dataframe por año, iniciando el registro en el año 2010 
 
 Ambos datasets se han utilizado para el análisis exploratorio, pero solo el segundo para la elaboración del modelo. 
 
-A continuación, veremos un resumen del preposesamiento realizado (incluyendo parte del codigo):
+A continuación, veremos un resumen del preposesado de datos realizado (incluyendo parte del codigo):
 
 
 ```python
@@ -143,12 +143,27 @@ df_accidents_2017.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripc
 df_accidents_2018.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal', 'nom_carrer', 'codi_carrer', 'descripcio_situacio', 'descripcio_victimitzacio', 'longitud', 'latitud'], inplace=True)
 df_accidents_2019.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal', 'codi_carrer', 'descripcio_victimitzacio', 'descripcio_lloc_atropellament_vianat', 'descripcio_motiu_desplacament_vianant', 'descripcio_motiu_desplacament_conductor', 'longitud', 'latitud'], inplace=True)
 df_accidents_2020.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripcio_torn', 'num_postal', 'nom_carrer', 'codi_carrer', 'descripcio_victimitzacio', 'descripcio_motiu_desplacament_vianant', 'descripcio_motiu_desplacament_conductor', 'longitud', 'latitud', 'descripcio_lloc_atropellament_vianat'], inplace=True)
+
+...
 ```
 
+> Como puede verse, primero leemos las 10 entradas de datos para luego homogeneizar la informacion contenida quitando simbolos y eliminando columnas con informacion que no se encuentra en todo el conjunto de dataframes.
 
+```
+# Concat all columns now that the format is standard
+df_accidents_union_all = pd.concat([df_accidents_2010, df_accidents_2011, df_accidents_2012, df_accidents_2013, df_accidents_2014, df_accidents_2015, df_accidents_2016, df_accidents_2017, df_accidents_2018, df_accidents_2019, df_accidents_2020])
 
-El proceso que hemos hecho sobre los dataframes, puede sintetizarse de la siguiente forma:
+# Remove accents and special character
+df_accidents_union_all['descripcio_causa_vianant'] = df_accidents_union_all['descripcio_causa_vianant'].str.normalize('NFKD').str.encode('ascii', errors='ignore').str.decode('utf-8')
+df_accidents_union_all['desc_tipus_vehicle_implicat'] = df_accidents_union_all['desc_tipus_vehicle_implicat'].str.normalize('NFKD').str.encode('ascii', errors='ignore').str.decode('utf-8')
+df_accidents_union_all['nom_barri'] = df_accidents_union_all['nom_barri'].str.normalize('NFKD').str.encode('ascii', errors='ignore').str.decode('utf-8')
+df_accidents_union_all['nom_districte'] = df_accidents_union_all['nom_districte'].str.normalize('NFKD').str.encode('ascii', errors='ignore').str.decode('utf-8')
 
+# Save the file
+df_accidents_union_all.to_csv('./accidents_homogenized_2010to2020.csv', index=False, header=True, encoding='utf-8')
+
+print("{0} INFO: Ending ETL visualization".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S')))
+```
 
 
 
