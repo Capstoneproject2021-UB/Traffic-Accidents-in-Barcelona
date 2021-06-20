@@ -147,7 +147,10 @@ df_accidents_2020.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripc
 ...
 ```
 
+
 > Como puede verse, primero leemos las 10 entradas de datos para luego homogeneizar la informacion contenida quitando simbolos y eliminando columnas con informacion que no se encuentra en todo el conjunto de dataframes.
+
+
 
 ```
 # Concat all columns now that the format is standard
@@ -165,6 +168,7 @@ df_accidents_union_all.to_csv('./accidents_homogenized_2010to2020.csv', index=Fa
 print("{0} INFO: Ending ETL visualization".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S')))
 ```
 
+> Continuacion con la estandarización de los datos. Finalmente, unimos las columnas de todos los dataframes y generamos un único archivo csv mo puede verse, primero leemos las 10 entradas de datos para luego homogeneizar la informacion contenida quitando simbolos y eliminando columnas con informacion que no se encuentra en todo el conjunto de dataframes.
 
 
 ## Analysis
