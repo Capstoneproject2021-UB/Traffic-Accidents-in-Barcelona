@@ -20,13 +20,9 @@ De acuerdo a la Organización Mundial de la Salud, como consecuencia de accident
 * La mitad de los accidentes ocurridos, tienen consecuencias sobre peatones, ciclistas y motociclistas.
 * Factores de riesgo: velocidad, conducción bajo los efectos del alcohol, no utilización de elementos de seguridad (cinturón de seguridad, casco, etc), conducción distraída e infraestructura vial insegura.
 
-<br>
-
 En el marco de la Union Europea, en la actualidad se producen por año alrededor de 49 muertes por millón de habitantes, frente a las 174 por millón en el mundo.
 Si bien se trata del continente con menor siniestralidad en carreteras en el mundo, el obejtivo para 2030 es reducir a la mitad el número de muertes y lesiones graves. 
 <br>En el año 2020, se han visto reducidos los niveles de siniestralidad en todo el continente, y según la Comisión Europea, "el menor volumen de tráfico como consecuencia de la pandemia sanitaria ha tenido un impacto directo, aunque no medible, en esta bajada de la siniestralidad vial". En el caso de España, se encuentra entre los 4 primeros países europeos con menor número de muertes (29 por millón).
-
-<br>
 
 Por último, la Ciudad de Barcelona ha tenido durante los últimos 10 años resultados dispares: si bien el número de muertos se ha reducido considerablemente (39 muertos en 2010 - 22 muertos en 2019), el número de accidentes registrados se ha incrementado. Las restricciones de movilidad producto de la pandemia de COVID-19 claramente han tenido un efecto en la siniestralidad, dado que durante 2020 se han reducido un 38% los siniestros en la ciudad.
 En la actualidad, la ciudad cuenta con un "Plan local de seguridad vial 2019-2022", con el objetivo de reducir un 20% las victimas de accidentes.
