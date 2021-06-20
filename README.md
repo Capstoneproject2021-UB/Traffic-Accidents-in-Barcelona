@@ -61,9 +61,9 @@ Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado 
 (TRABAJO EN PROCESO) 
 (TRABAJO EN PROCESO) 
 
-## Dataset
-  a)
-  b) data preprocessing 
+## 1) Dataset y ETL
+
+### 1a) Data preprocessing 
 
 ## Analysis
  a) Data Exploration
