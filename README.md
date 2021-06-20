@@ -10,7 +10,27 @@ Authors:
 * Miguel José Santos Vaz
 
 
-## Introduction and Project Overview
+## Introduction 
+
+De acuerdo a la Organización Mundial de la Salud, como consecuencia de accidentes viales cada año mueren alrededor de 1.3 millones de personas en todo el mundo. Mientras que el número de lesionados a nivel mundial varía entre 20 y 50 millones de personas.
+
+**Principales datos:
+* Los accidentes son un riesgo muy superior para niños y jóvenes: Se trata de la primer causa de muerte en personas de entre 5 y 29 años.
+* La mitad de los accidentes ocurridos, tienen consecuencias sobre peatones, ciclistas y motociclistas.
+* Factores de riesgo: velocidad, conducción bajo los efectos del alcohol, no utilización de elementos de seguridad (cinturón de seguridad, casco, etc), conducción distraída e infraestructura vial insegura.
+
+En el marco de la Union Europea, en la actualidad se producen por año alrededor de 49 muertes por millón de habitantes, frente a las 174 por millón en el mundo.
+Si bien se trata del continente con menor siniestralidad en carreteras en el mundo, el obejtivo para 2030 es reducir a la mitad el número de muertes y lesiones graves.
+En el caso de España, se encuentra entre los 4 primeros países europeos con menor número de muertes (29 por millón).
+
+En el año 2020, se han visto reducidos los niveles de siniestralidad en todo el continente, y según la Comisión Europea, "el menor volumen de tráfico como consecuencia de la pandemia sanitaria ha tenido un impacto directo, aunque no medible, en esta bajada de la siniestralidad vial".
+
+Por último, la Ciudad de Barcelona ha tenido durante los últimos 10 años resultados dispares: si bien el número de muertos se ha reducido considerablemente (39 muertos en 2010 - 22 muertos en 2019), el número de accidentes registrados se ha incrementado. 
+En la actualidad, la ciudad cuenta con un "Plan local de seguridad vial 2019-2022", con el objetivo de reducir un 20% las victimas de accidentes.
+
+
+
+## Project Overview
 
 El objetivo principal del presente proyecto es el de generar un modelo de aprendizaje automático capaz de catalogar información relacionada a accidentes de tránsito. Más precisamente, buscamos que el algoritmo pueda identificar si un determinado accidente de tránsito ha ocurrido en un marco de restricciones sanitarias, como las ocurridas como consecuencia de la Pandemia de COVID-19.
 Para este proyecto, hemos utilizado información de los accidentes de tránsito ocurridos en la Ciudad de Barcelona, durante los últimos 10 años. Se trata de un dataset muy completo compartido por el Ayuntamiento de Barcelona, a través del sitio web: Open Data BCN (https://opendata-ajuntament.barcelona.cat).
@@ -58,7 +78,14 @@ Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado 
 ## References
 
 
-source: https://opendata-ajuntament.barcelona.cat/data/en/dataset/accidents-persones-gu-bcn
+sources: 
+
+https://www.who.int/es/news-room/fact-sheets/detail/road-traffic-injuries
+https://ec.europa.eu/commission/presscorner/detail/es/ip_20_1003
+https://www.europarl.europa.eu/news/es/headlines/society/20190307STO30715/seguridad-vial-nuevas-medidas-europeas-para-reducir-los-accidentes-de-trafico
+https://opendata-ajuntament.barcelona.cat/data/en/dataset/accidents-persones-gu-bcn
+https://www.barcelona.cat/infobarcelona/es/nuevo-plan-de-seguridad-vial-para-reducir-en-un-20-a-las-victimas-de-accidentes-de-trafico_880868.html
+
 
 
 (WORK ON PROGRESS)
