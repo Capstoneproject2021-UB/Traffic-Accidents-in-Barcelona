@@ -233,7 +233,14 @@ df_feature_covid = f_generate_covid_feature(df_feature_covid)
 ```
 <br>
 
-> Continuamos con la estandarización de los datos, y finalmente unimos las columnas de todos los dataframes. Generando así un único archivo csv denominado *df_accidents_union_all*
+> Generamos el feature de COVID. Continuamos con la estandarización de los datos, y finalmente unimos las columnas de todos los dataframes. Generando así un único archivo csv denominado *df_accidents_union_all*
+
+
+
+
+
+
+
 
 ## Analysis
  a) Data Exploration
