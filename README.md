@@ -153,7 +153,7 @@ df_accidents_2020.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripc
 
 <br>
 
-```
+```python
 # Concat all columns now that the format is standard
 df_accidents_union_all = pd.concat([df_accidents_2010, df_accidents_2011, df_accidents_2012, df_accidents_2013, df_accidents_2014, df_accidents_2015, df_accidents_2016, df_accidents_2017, df_accidents_2018, df_accidents_2019, df_accidents_2020])
 
@@ -174,7 +174,7 @@ print("{0} INFO: Ending ETL visualization".format(datetime.datetime.now().strfti
 
 <br>
 
-```
+```python
 # Download Covid data restrictions from API
 def f_read_covid():
     try:
