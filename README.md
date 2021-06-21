@@ -80,6 +80,7 @@ Ambos datasets se han utilizado para el análisis exploratorio, pero solo el seg
 
 A continuación, veremos un resumen del preposesado de datos realizado (incluyendo parte del codigo):
 
+ 1.a) Primero leemos las 10 entradas de datos para luego homogeneizar la informacion contenida, quitando simbolos y eliminando columnas con informacion que no se encuentra en todo el conjunto de dataframes.
 
 ```python
 import pandas as pd
@@ -146,7 +147,7 @@ df_accidents_2020.drop(columns=['dia_setmana', 'descripcio_tipus_dia', 'descripc
 
 <br>
 
-> Como puede verse, primero leemos las 10 entradas de datos para luego homogeneizar la informacion contenida quitando simbolos y eliminando columnas con informacion que no se encuentra en todo el conjunto de dataframes.
+1.b) Continuamos con la estandarización de los datos, y finalmente unimos las columnas de todos los dataframes. Generando así un único archivo csv denominado *df_accidents_union_all*
 
 <br>
 
@@ -167,7 +168,7 @@ print("{0} INFO: Ending ETL visualization".format(datetime.datetime.now().strfti
 ```
 <br>
 
-> Continuamos con la estandarización de los datos, y finalmente unimos las columnas de todos los dataframes. Generando así un único archivo csv denominado *df_accidents_union_all*
+1.c) Incorporamos en el dataframe el feature de COVID: 
 
 <br>
 
@@ -229,12 +230,10 @@ df_feature_covid = f_generate_covid_feature(df_feature_covid)
 ```
 <br>
 
-> Generamos el feature de COVID. Continuamos con la estandarización de los datos, y finalmente unimos las columnas de todos los dataframes. Generando así un único archivo csv denominado *df_accidents_union_all*
 
-Para generar el feature del covid buscamos generar un feature estandarizado del 0 al 10 siendo 0 el periodo pre-covid y siendo 10 la máxima restricción de cuarentena domiciliaria que entró en vigor en marzo del 2021.
-Para ello necesitábamos una base de datos enfocada a las restricciones dónde poder discernir entre los diferentes niveles de restricciones que se han ido haciendo efectivos en las distintas fases.
-En concreto durante la segunda y tercera ola entramos en un nuevo escenario de medidas más locales y acotadas que requerían de una variable más compleja que un simple booleano indicando si estábamos en época covid o no iCovid: True/False.
-Y así con las necesidades más definidas encontramos la siguiente base de datos:
+Se trata de un feature estandarizado del 0 al 10. Siendo 0 el periodo pre-covid y siendo 10 la máxima restricción de cuarentena domiciliaria que entró en vigor en marzo del 2020.
+Para ello necesitábamos una base de datos enfocada a las restricciones dónde poder discernir entre los diferentes niveles de restricciones que se han ido haciendo efectivos en las distintas fases. En concreto durante la segunda y tercera ola entramos en un nuevo escenario de medidas más locales y acotadas que requerían de una variable más compleja que un simple booleano indicando si estábamos en época covid o no iCovid: True/False.
+Buscando resolver este invonvenient, encontramos la siguiente base de datos:
 
 https://github.com/OxCGRT/covid-policy-tracker
 
@@ -243,8 +242,6 @@ https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT
 Una pequeña base de datos generada con el objetivo de recopilar y estandarizar las restricciones por países. Adicionalmente, cuenta con información más genérica cómo el número de casos confirmados, muertes, inversión estatal, etc. aunque nosotros haremos énfasis en recuperar los datos sobre las restricciones como hemos indicado.
 Así obtenemos un CSV al cual bastará filtrar por España para obtener los datos que necesitamos y empezar a trabajar en nuestro nuevo feature. 
 Una consideración importante para mejorar los datos del Covid empleados, sería complementarlos con las restricciones autonómicas. En una hipotética segunda fase del proyecto, ésta sería sin duda una tarea interesante. 
-
-Una vez tenemos nuestros datos disponibles podemos aplicar las transformaciones oportunas.
 
 
 
