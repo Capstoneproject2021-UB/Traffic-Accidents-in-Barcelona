@@ -61,12 +61,9 @@ Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado 
 (TRABAJO EN PROCESO) 
 (TRABAJO EN PROCESO) 
 
-## 1) Dataset y ETL
+## 1) Data preprocessing 
 
 <br>
- 
-### 1a) Data preprocessing 
-
  
  Para este proyecto hemos utilizado 2 datasets relacionados con accidentes viales, que el ayuntamiento de Barcelona publica anualmente en el portal *Open data Barcelona*. 
 
