@@ -239,7 +239,7 @@ https://github.com/OxCGRT/covid-policy-tracker
 
 https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv
 
-Una pequeña base de datos generada con el objetivo de recopilar y estandarizar las restricciones por países. Adicionalmente, cuenta con información más genérica cómo el número de casos confirmados, muertes, inversión estatal, etc. aunque nosotros haremos énfasis en recuperar los datos sobre las restricciones como hemos indicado.
+Una pequeña base de datos generada con el objetivo de recopilar y estandarizar las restricciones por países. Adicionalmente, cuenta con información más genérica cómo el número de casos confirmados, muertes, inversión estatal, etc. Aunque nosotros haremos énfasis en recuperar los datos sobre las restricciones como hemos indicado.
 Así obtenemos un CSV al cual bastará filtrar por España para obtener los datos que necesitamos y empezar a trabajar en nuestro nuevo feature. 
 Una consideración importante para mejorar los datos del Covid empleados, sería complementarlos con las restricciones autonómicas. En una hipotética segunda fase del proyecto, ésta sería sin duda una tarea interesante. 
 
