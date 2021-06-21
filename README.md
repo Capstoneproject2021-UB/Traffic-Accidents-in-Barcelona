@@ -168,7 +168,7 @@ print("{0} INFO: Ending ETL visualization".format(datetime.datetime.now().strfti
 ```
 <br>
 
-1.c) Incorporamos en el dataframe el feature de COVID: 
+1.c) Generamos el feature de COVID: 
 
 <br>
 
@@ -244,12 +244,28 @@ Así obtenemos un CSV al cual bastará filtrar por España para obtener los dato
 Una consideración importante para mejorar los datos del Covid empleados, sería complementarlos con las restricciones autonómicas. En una hipotética segunda fase del proyecto, ésta sería sin duda una tarea interesante. 
 
 
+1.d) Por último, unificamos las columnas de fecha e incorporamos el feature de COVID al dataframe: 
+
+```python
+# Merge section
+df_accidents_union_all['Full_Date'] = df_accidents_union_all['any'].map(str) + df_accidents_union_all['mes_any'].map(str).str.zfill(2) + df_accidents_union_all['dia_mes'].map(str).str.zfill(2)
+df_accidents_union_all['Full_Date'] = df_accidents_union_all['Full_Date'].astype(int)
+df_accidents_union_all = pd.merge(df_accidents_union_all, df_feature_covid, left_on="Full_Date", right_on="Date", how="left", sort=False)
+df_accidents_union_all['COVID'] = df_accidents_union_all['COVID'].fillna(0)
+df_accidents_union_all.drop(columns=['Date', 'dia_mes', 'mes_any'], inplace=True)
+```
+
+Hemos seguido el mismo proceso para el segundo dataset que hemos analizado (*Accidents managed by the local police in the city of Barcelona*) 
 
 
 
+## 2) Data Exploration
 
+La información que hemos procesado en el punto anterior la hemos utilizado no solo para alimentar el modelo de aprendizaje automatico, sino tambien para elaborar un breve análisis sobre la evolución de la accidentalidad en los últimos años, y sus principales características.
+Para ello, hemos utilizado las clásicas librerias de Python destinadas al análisis de datos. Incluyendo **Plotly**, una libreria para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos trabajado también con Tableau para la creación de visualizaciones más complejas.
 
-## Analysis
+### 2a) Accidentes en Barcelona - Una primera aproximación:
+
  a) Data Exploration
  b) Exploratory Visualization
  c) Relationship between the features
