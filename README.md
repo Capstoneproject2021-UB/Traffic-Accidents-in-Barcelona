@@ -262,9 +262,12 @@ Hemos seguido el mismo proceso para el segundo dataset que hemos analizado (*Acc
 ## 2) Data Exploration
 
 La información que hemos procesado en el punto anterior la hemos utilizado no solo para alimentar el modelo de aprendizaje automatico, sino tambien para elaborar un breve análisis sobre la evolución de la accidentalidad en los últimos años, y sus principales características.
-Para ello, hemos utilizado las clásicas librerias de Python destinadas al análisis de datos. Incluyendo **Plotly**, una libreria para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos trabajado también con Tableau para la creación de visualizaciones más complejas.
+Para ello, hemos trabajado con las clásicas librerias de Python destinadas al análisis de datos. Incluyendo **Plotly**, una libreria para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos utilizado con Tableau para la creación de visualizaciones más complejas.
 
 ### 2a) Accidentes en Barcelona - Una primera aproximación:
+
+
+![Menu Debug, en Spyder](Charts/chart1.png)
 
  a) Data Exploration
  b) Exploratory Visualization
