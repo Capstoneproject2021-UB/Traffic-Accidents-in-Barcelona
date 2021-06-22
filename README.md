@@ -267,7 +267,12 @@ Para ello, hemos trabajado con las clásicas librerias de Python destinadas al a
 ### 2a) Accidentes en Barcelona - Una primera aproximación:
 
 
-![Menu Debug, en Spyder](Charts/chart1.png)
+
+<br>
+
+![Tabla1](Charts/chart1.png)
+
+Entre 2010 y 2020, un total de 277 personas han perdido la vida como consecuencia de accidentes de tránsito. Sin embargo, el número de fallecidos viene decreciendo año a año, tal y como podemos ver en el siguiente gráfico: 
 
  a) Data Exploration
  b) Exploratory Visualization
