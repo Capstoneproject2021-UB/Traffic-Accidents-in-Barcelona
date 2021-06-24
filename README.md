@@ -280,6 +280,231 @@ Entre 2010 y 2020, un total de 277 personas han perdido la vida como consecuenci
 
 ## Modelization
 
+Antes de modelizar deberemos definir la variable objetivo a predecir así como la granularidad o dimensionalidad, es decir el nivel de detalle u agregación de nuestros datos.
+
+Sabemos que a mayor volumetría de datos mejor precisión tendremos en las predicciones realizadas. También conocemos las limitaciones de tratar de predecir a un nivel muy bajo de granularidad, dónde el efecto de la aleatoriedad es más fuerte.
+
+En concreto para nuestro caso, si tratamos de predecir los accidentes para una hora y día en concreto, la complejidad crece exponencialmente, ya que existen factores aleatorios que poco o nada tienen que ver con los parámetros temporales y geosociales que analizamos. Por ejemplo, si un conductor padece un ataque al corazón o ha discutido con alguien y conduce de forma agresiva u otro conductor pueda sufrir un fallo mecánico en su vehículo. Todos estos procesos aleatorios resultan muy complejo de predecir, haría falta una dimensionalidad tendiente al infinito y describir prácticamente toda la realidad, prácticamente una simulación del mundo real que a día de hoy suena a ciencia ficción. Por lo tanto para modelizar trataremos de identificar patrones más estacionales, por ejemplo sabemos que determinadas noches del año son más conflictivas dónde el alcohol u otras drogas pueden suelen estar presentes en más conductores, como San Joan o fin de año. Otros fenómenos debidos al alto flujo de vehículos también aumentan las probabilidades de accidente como en días laborables.
+
+Con el objetivo de tratar de conseguir identificar estos patrones, decidimos agrupar los datos para predecir a un nivel superior atenuando así la variabilidad.
+
+Finalmente la variable objetivo será tratar de predecir el número de accidentes por distrito y mes. Así en sintonía con el resto del proyecto y la exploración de los datos, planteamos casos de uso para explotar el poder predictivo oculto en los datos. Lanzando proyecciones precisas, estas podrían ayudar a organizaciones como la Guardia Urbana a una mejor optimización de los recursos disponibles, así como para que el Ajuntament de Barcelona, soporte en el diseño de planes de urbanismo enfocados a una mejor fluidez del tráfico y reducción de accidentes.
+
+```python
+import pandas as pd
+import numpy as np
+import datetime
+import unicodedata
+from sklearn.metrics import r2_score, mean_absolute_error
+
+df_localpolice_union_all = pd.read_csv('accidents_localpolice_homogenized_2010to2020.csv', delimiter=',',
+                                       encoding='utf8')
+df_localpolice_union_all = df_localpolice_union_all[df_localpolice_union_all['nom_districte'] != 'Desconegut'].copy()
+df_localpolice_union_all.drop(
+    columns=['hora_dia', 'codi_barri', 'codi_carrer', 'codi_districte', 'coordenada_utm_x', 'coordenada_utm_y',
+             'descripcio_causa_vianant', 'nom_barri', 'nom_carrer', 'numero_expedient', 'Full_Date'], inplace=True)
+df_localpolice_union_all.drop(
+    columns=['dia_setmana', 'numero_lesionats_greus', 'numero_lesionats_lleus', 'numero_vehicles_implicats'],
+    inplace=True)
+
+# Group by to make predictions by district and month
+# the previous aggregation level was too low, which made impossible to predict all random variations
+# grouping by on a monthly basis randomness gets diluted and compensated
+df_localpolice_union_all = df_localpolice_union_all.groupby(['nom_districte', 'any', 'mes_any']).agg(
+    {'numero_victimes': 'sum', 'COVID': 'mean'}).reset_index()
+
+# Lines to drop Covid feature or include it
+# Since we do not have enough historic data with covid, the ML cannot be trained properly
+# df_localpolice_union_all.drop(columns=['COVID'], inplace=True)
+# df_localpolice_union_all = df_localpolice_union_all.groupby(['nom_districte', 'any', 'mes_any']).agg({'numero_victimes': 'sum'}).reset_index()
+
+# One hot encoding: models need numbers without overvalue high numbers 1to12 months would score higher decembers otherwise
+one_hot_encoding = pd.get_dummies(df_localpolice_union_all.mes_any, prefix='mes_any')
+df_localpolice_union_all = pd.concat([df_localpolice_union_all, one_hot_encoding], axis=1)
+one_hot_encoding = pd.get_dummies(df_localpolice_union_all.nom_districte, prefix='nom_districte')
+df_localpolice_union_all = pd.concat([df_localpolice_union_all, one_hot_encoding], axis=1)
+df_localpolice_union_all.drop(columns=['mes_any', 'nom_districte'], inplace=True)
+
+# Decide which Library and target value you want to predict TPOT or MLJAR
+type_of_model = 'MLJAR'
+variable_objetivo = 'numero_victimes'
+
+# Split train dataset, take at least some months with covid to provide the train samples some historic data about covid
+df_train_x = df_localpolice_union_all[df_localpolice_union_all['any'] < 2020].copy()
+df_train_x = df_train_x.append(df_localpolice_union_all.query(
+    'any == 2020 & mes_any_9 != 1 & mes_any_10 != 1 & mes_any_11 != 1 & mes_any_12 != 1'), ignore_index=True)
+
+df_train_x = df_train_x.fillna(0)
+df_train_y = df_train_x[variable_objetivo]
+df_train_x.drop(columns=[variable_objetivo], inplace=True)
+
+# We would also need some months of Covid
+df_test_x = df_localpolice_union_all.query(
+    '(any == 2020 & mes_any_9 == 1) | (any == 2020 & mes_any_10 == 1) | (any == 2020 & mes_any_11 == 1) | (any == 2020 & mes_any_12 == 1)')
+
+df_test_x = df_test_x.fillna(0)
+df_test_y = df_test_x[variable_objetivo]
+df_test_x.drop(columns=[variable_objetivo], inplace=True)
+
+# Make sure they are numpy arrays
+df_train_x = df_train_x.to_numpy()
+df_train_y = df_train_y.to_numpy()
+df_test_x = df_test_x.to_numpy()
+df_test_y = df_test_y.to_numpy()
+
+df_train_x = np.where(np.isnan(df_train_x), 0, df_train_x)
+df_train_y = np.where(np.isnan(df_train_y), 0, df_train_y)
+df_test_x = np.where(np.isnan(df_test_x), 0, df_test_x)
+df_test_y = np.where(np.isnan(df_test_y), 0, df_test_y)
+
+# Verify its shape and type
+"""
+print(df_train_x.shape)
+print(type(df_train_x))
+print(df_train_y.shape)
+print(type(df_train_y))
+print(df_test_x.shape)
+print(type(df_test_x))
+print(df_test_y.shape)
+print(type(df_test_y))
+"""
+
+```
+
+A continuación, definimos las funciones de MAPE y Weighted MAPE, fórmulas estándar en la industria para calcular el Forecast Accuracy.
+
+```python
+
+# functions to calculate accuracies
+def f_calculate_mape(y_true, y_pred):
+    y_pred = np.where(y_pred > 0, y_pred, 0)
+    # record to record calculations
+    fa = np.zeros(len(y_true))
+    for i in range(len(y_true)):
+        bias = abs(y_true[i] - y_pred[i])
+        if (y_true[i] == 0) & (y_pred[i] == 0):
+            er = 0
+        elif y_pred[i] == 0:
+            er = bias / (1 + abs(y_true[i]))
+        else:
+            er = bias / y_true[i]
+        fa[i] = 1 - er
+    # Do not take into account forecasts accuracies equal to 0
+    fa = fa[~np.isnan(fa)]
+    fa[fa < 0] = 0
+    return fa
+
+
+def f_calculate_mape_weighted(y_true, y_pred):
+    fa = f_calculate_mape(y_true, y_pred)
+    sum_total = sum(y_true)
+    if sum_total != 0:
+        perc_liters_sold = y_true / sum_total
+    else:
+        perc_liters_sold = 0
+    if sum(y_true == y_pred) == len(y_true):
+        res = 1
+    else:
+        res = sum(fa * perc_liters_sold)
+    return res
+
+
+
+
+```
+Por último haremos uso de 2 de las librerías más populares de Auto Machine Learning: TPOT y MLJar. Estas librerías son especialmente útiles, ya que se encargan de seleccionar de forma automática el mejor modelo para tu conjunto de datos. Estas 2 librerías en concreto adicionalmente realizan tareas de feature selection y hasta nuevas features con combinatorias matemáticas de las existentes. 
+
+La librería de AutoML son una forma eficiente y rápida de desplegar modelos competitivos y parametrizables. Pese a sus diferencias el funcionamiento básico es el mismo, la entrada de un dataset de entreno en arrays numpy de formato numérico seguido del resultado de la variable objetivo. Una vez entrenado y generado el modelo, podremos predecir, para ello se le pasa como entrada un dataset test en el mismo formato, sin la variable objetivo, el resultado será tu array de predicciones.
+
+```python
+
+if type_of_model == 'TPOT':
+
+    #############################################
+    # AUTO ML - TPOT
+    #############################################
+
+    # conda install -c conda-forge tpot
+    from tpot import TPOTRegressor
+    from sklearn.datasets import load_boston
+    from sklearn.model_selection import train_test_split
+
+    # Un-comment here to train the model
+    tpot = TPOTRegressor(generations=25, population_size=50, verbosity=2, random_state=0, n_jobs=-1, scoring='r2')
+    # Train
+    tpot.fit(df_train_x, df_train_y)
+    # Tpot generates a file that need to be cleaned in order to use the selected model
+    model = tpot
+
+    tpot.export('tpot_pipeline.py')
+    # to use previous generated models by tpot and do not run tpot each time, we can clean the exported files
+    # we only get the header, imports and parameters with the best select model by tpot the we just fit that model
+    """
+    with open('tpot_pipeline.py', "r") as f:
+        lines = f.readlines()
+    with open('tpot_pipeline.py', "w") as f:
+        line_to_keep = False
+        for line in lines:
+            if line_to_keep is True:
+                if line.strip("\n") != ")":
+                    f.write(line)
+                else:
+                    f.write(line)
+                    break
+                    # If there are no further lines, exit
+            elif ("import" in line) | ("from" in line):
+                f.write(line)
+            elif "exported_pipeline" in line.strip("\n"):
+                line_to_keep = True
+                f.write(line)
+                if ")" == line.strip("\n")[-1:]:
+                    break
+    
+    from tpot_pipeline import exported_pipeline
+    model = exported_pipeline.fit(df_train_x, df_train_y)
+    """
+
+    # scores
+    print("{0} INFO: model score: ".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S'),
+                                           model.score(df_test_x, df_test_y)))
+    # print(model.score(df_test_x, df_test_y))
+    predictions = model.predict(df_test_x)
+    predictions[predictions < 0] = 0
+    predictions = np.rint(predictions)
+    print("{0} INFO: predictions: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S'), predictions))
+    # print(predictions)
+    print("{0} INFO: real: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S'), df_test_y))
+    # print(df_test_y)
+    print(0)
+
+elif type_of_model == 'MLJAR':
+    #############################################
+    # AUTO ML - MLJAR https://supervised.mljar.com/api/
+    #############################################
+    from supervised.automl import AutoML
+
+    # configure AutoML based on its official documentation
+    automl = AutoML(eval_metric='r2', n_jobs=-1, golden_features=True, stack_models=True, train_ensemble=True,
+                    validation_strategy={"validation_type": "kfold", "k_folds": 5, "shuffle": True, "stratify": True,
+                                         "random_seed": 123})
+    # train models with AutoML
+    automl.fit(df_train_x, df_train_y)
+
+    # compute the MSE on test data
+    predictions = automl.predict(df_test_x)
+    print(0)
+
+mape = f_calculate_mape(df_test_y, predictions)
+print("{0} INFO: mape detail: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S'), mape))
+print("{0} INFO: mape: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S'), np.average(mape)))
+mape_weighted = f_calculate_mape_weighted(df_test_y, predictions)
+print("{0} INFO: mape weighted: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S'), mape_weighted))
+r2 = r2_score(df_test_y, predictions)
+print("{0} INFO: r2: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S'), r2))
+mae = mean_absolute_error(df_test_y, predictions)
+print("{0} INFO: mae: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S'), mae))
+```
+
 ## Conclusion
 
 ## References
