@@ -279,18 +279,18 @@ Entre 2010 y 2020, un total de 277 personas han perdido la vida como consecuenci
 ![Tabla2](Charts/chart2.png)
 
 
-Aun así, el número de accidentes y de lesionados no fatales ha aumentado a lo largo de los últimos diez años
+Aun así, el número de accidentes y de lesionados no fatales ha aumentado a lo largo de los últimos diez años.
 
 <br>
 
 ![Tabla3](Charts/chart3.png)
 
-Puede observarse con facilidad que la tendencia de accidentes y lesionados cae abruptamente en el año 2020. Es evidente que la pandemia de COVID-19 ha tenido consecuencias sobre la forma en la que nos desplazamos por las ciudades.
+Puede observarse con facilidad que la tendencia de accidentes y lesionados cae abruptamente en el año 2020. Es evidente que la pandemia de COVID-19 ha tenido consecuencias sobre la forma en la que nos desplazamos por la ciudad. Profundizaremos esta cuestión con el modelo que hemos desarrollado en el punto 3.
 
 
-### 2a) Accidentes en Barcelona - Distribución estadística:
+### 2b) Accidentes en Barcelona - Distribución estadística:
 
-El siguiente gráfico refleja la distribución de accidentados a lo largo de las horas de un día. Puede verse como los niveles de accidentalidad comienzan a aumentar en el transcurso de la mañana, llegando al pico de accidentados a las 14hs pero revirtiendo la tendencia creciente a partir de las 18hs. Desde ese momento, los accidentes comienzan a reducirse. 
+El siguiente gráfico refleja la distribución de accidentados a lo largo de las horas de un día. Puede verse como los niveles de accidentalidad comienzan a aumentar en el transcurso de la mañana, llegando al pico de accidentados a las 14hs pero revirtiendo la tendencia creciente a partir de las 18hs. Desde ese momento, los accidentes comienzan a reducirse.
 
 <br>
 
@@ -309,6 +309,38 @@ No observamos ninguna tendencia relevante respecto a los días del mes.
 <br>
 
 ![Tabla6](Charts/chart6.png)
+
+
+
+### 2c) Accidentes en Barcelona - Distribución geográfica:
+
+Exiample es el districto que acumula el mayor número de accidentes (y por ende de victimas)
+
+<br>
+
+![Tabla7](Charts/chart7.png)
+
+Para tener una representación más exacta de la distribución de los accidentes a lo largo de la ciudad, hemos generado un mapa de la misma utilizando las librerias **Folium**. Cada registro del dataframe cuenta con las coordenadas del lugar del hecho, con lo cual hemos "ubicado" esta información en el mapa de la ciudad.
+En este caso, nos hemos centrado en los años 2019 y 2020 para facilitar la visualización.
+
+
+<br>
+
+![Tabla9](Charts/chart9.png)
+
+Los puntos pequeños representan accidentes en los cuales han tenido como resultado uno (o más) heridos de gravedad. Mientras que los puntos grandes representan el punto geográfico en el que ha ocurrido un accidente mortal.
+Los accidentes del año 2019 son de color rojo, y de azul los del 2020.
+
+Una vez más, es sencillo de apreciar la diferencia entre 2020 y un año previo a la pandemia. Vemos además como se concentran los accidentes, formando un triángulo entre la Avenida Diagonal y Gran Via de les Corts Catalanes (Eixample). 
+
+
+### 2d) Accidentes en Barcelona - Vehiculos involucrados:
+
+<br>
+
+![Tabla8](Charts/chart8.png)
+
+El 76% de los accidentes de tránsito ha involucrado a 2 o más vehiculos
 
  a) Data Exploration
  b) Exploratory Visualization
