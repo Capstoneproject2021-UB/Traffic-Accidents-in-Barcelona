@@ -264,6 +264,7 @@ Hemos seguido el mismo proceso para el segundo dataset que hemos analizado (*Acc
 La información que hemos procesado en el punto anterior la hemos utilizado no solo para alimentar el modelo de aprendizaje automatico, sino tambien para elaborar un breve análisis sobre la evolución de la accidentalidad en los últimos años, y sus principales características.
 Para ello, hemos trabajado con las clásicas librerias de Python destinadas al análisis de datos. Incluyendo **Plotly**, una libreria para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos utilizado con Tableau para la creación de visualizaciones más complejas.
 
+<br>
 ### 2a) Accidentes en Barcelona - Una primera aproximación:
 
 
@@ -288,6 +289,14 @@ Aun así, el número de accidentes y de lesionados no fatales ha aumentado a lo 
 Puede observarse con facilidad que la tendencia de accidentes y lesionados cae abruptamente en el año 2020. Es evidente que la pandemia de COVID-19 ha tenido consecuencias sobre la forma en la que nos desplazamos por la ciudad. Profundizaremos esta cuestión con el modelo que hemos desarrollado en el punto 3.
 
 
+<br>
+
+![Tabla11](Charts/chart11.png)
+
+Del total de personas involucradas en accidentes, vemos que el 70% son conductores del vehiculo en cuestión. Solo el 10% son peatones.
+
+<br>
+
 ### 2b) Accidentes en Barcelona - Distribución estadística:
 
 El siguiente gráfico refleja la distribución de accidentados a lo largo de las horas de un día. Puede verse como los niveles de accidentalidad comienzan a aumentar en el transcurso de la mañana, llegando al pico de accidentados a las 14hs pero revirtiendo la tendencia creciente a partir de las 18hs. Desde ese momento, los accidentes comienzan a reducirse.
@@ -311,6 +320,7 @@ No observamos ninguna tendencia relevante respecto a los días del mes.
 ![Tabla6](Charts/chart6.png)
 
 
+<br>
 
 ### 2c) Accidentes en Barcelona - Distribución geográfica:
 
@@ -333,14 +343,23 @@ Los accidentes del año 2019 son de color rojo, y de azul los del 2020.
 
 Una vez más, es sencillo de apreciar la diferencia entre 2020 y un año previo a la pandemia. Vemos además como se concentran los accidentes, formando un triángulo entre la Avenida Diagonal y Gran Via de les Corts Catalanes (Eixample). 
 
+<br>
 
 ### 2d) Accidentes en Barcelona - Vehiculos involucrados:
+
+
+El 76% de los accidentes de tránsito ha involucrado a 2 o más vehiculos
 
 <br>
 
 ![Tabla8](Charts/chart8.png)
 
-El 76% de los accidentes de tránsito ha involucrado a 2 o más vehiculos
+
+Definitivamente, los vehiculos de dos ruedas tienen predominancia en cuanto a la participación en accidentes. Dentro de este grupo, las motocicletas destacan como el principal vehiculo involucrado 
+
+<br>
+
+![Tabla10](Charts/chart10.png)
 
  a) Data Exploration
  b) Exploratory Visualization
