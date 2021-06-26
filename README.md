@@ -270,17 +270,19 @@ Para ello, hemos trabajado con las clásicas librerias de Python destinadas al a
 
 <br>
 
-![Tabla1](Charts/chart1.png)
+![Tabla](Charts/chart1.png)
 
 Entre 2010 y 2020, un total de 277 personas han perdido la vida como consecuencia de accidentes de tránsito. Sin embargo, el número de fallecidos viene decreciendo año a año, tal y como podemos ver en el siguiente gráfico: 
 
 <br>
+
 ![Tabla2](Charts/chart2.png)
 
 
 Aun así, el número de accidentes y de lesionados no fatales ha aumentado a lo largo de los últimos diez años
 
 <br>
+
 ![Tabla3](Charts/chart3.png)
 
 Puede observarse con facilidad que la tendencia de accidentes y lesionados cae abruptamente en el año 2020. Es evidente que la pandemia de COVID-19 ha tenido consecuencias sobre la forma en la que nos desplazamos por las ciudades.
@@ -291,18 +293,21 @@ Puede observarse con facilidad que la tendencia de accidentes y lesionados cae a
 El siguiente gráfico refleja la distribución de accidentados a lo largo de las horas de un día. Puede verse como los niveles de accidentalidad comienzan a aumentar en el transcurso de la mañana, llegando al pico de accidentados a las 14hs pero revirtiendo la tendencia creciente a partir de las 18hs. Desde ese momento, los accidentes comienzan a reducirse. 
 
 <br>
+
 ![Tabla4](Charts/chart4.png)
 
 
 Respecto a la accidentalidad en el transcurso de la semana. Se ve un claro crecimiento a lo largo de la semana laboral, llegando a un pico los días viernes. Fines de de semana los accidentes se reducen.
 
 <br>
+
 ![Tabla5](Charts/chart5.png)
 
 
 No observamos ninguna tendencia relevante respecto a los días del mes.
 
 <br>
+
 ![Tabla6](Charts/chart6.png)
 
  a) Data Exploration
