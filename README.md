@@ -3,14 +3,14 @@
 
 *The following article and its related repository are part of the Capstone Project for the Data Science and Big Data Postgraduate Course at Universitat de Barcelona, 2020-2021.*
 
-Authors:
+Autores:
 
 * Marc Iñigo Albalate
 * Leonardo Gabriel Papi
 * Miguel José Santos Vaz
 
 
-## Introduction 
+## Introducción
 
 De acuerdo a la Organización Mundial de la Salud, como consecuencia de accidentes viales cada año mueren alrededor de 1.3 millones de personas en todo el mundo. Mientras que el número de lesionados a nivel mundial varía entre 20 y 50 millones de personas.
 
@@ -325,7 +325,7 @@ No observamos ninguna tendencia relevante respecto a los días del mes.
 
 ### 2c) Accidentes en Barcelona - Distribución geográfica:
 
-Exiample es el districto que acumula el mayor número de accidentes (y por ende de victimas)
+Exiample es el districto que acumula el mayor número de accidentes (y por ende de victimas).
 
 <br>
 
@@ -349,14 +349,14 @@ Una vez más, es sencillo de apreciar la diferencia entre 2020 y un año previo 
 ### 2d) Accidentes en Barcelona - Vehiculos involucrados:
 
 
-El 76% de los accidentes de tránsito ha involucrado a 2 o más vehiculos
+El 76% de los accidentes de tránsito ha involucrado a 2 o más vehiculos.
 
 <br>
 
 ![Tabla8](Charts/chart8.png)
 
 
-Definitivamente, los vehiculos de dos ruedas tienen predominancia en cuanto a la participación en accidentes. Dentro de este grupo, las motocicletas destacan como el principal vehiculo involucrado 
+Definitivamente, los vehiculos de dos ruedas tienen predominancia en cuanto a la participación en accidentes. Dentro de este grupo, las motocicletas destacan como el principal vehiculo involucrado.
 
 <br>
 
