@@ -265,6 +265,7 @@ La información que hemos procesado en el punto anterior la hemos utilizado no s
 Para ello, hemos trabajado con las clásicas librerias de Python destinadas al análisis de datos. Incluyendo **Plotly**, una libreria para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos utilizado con Tableau para la creación de visualizaciones más complejas.
 
 <br>
+
 ### 2a) Accidentes en Barcelona - Una primera aproximación:
 
 
