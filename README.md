@@ -282,7 +282,7 @@ Aun así, el número de accidentes y de lesionados no fatales ha aumentado a lo 
 
 ![Tabla3](Charts/chart3.png)
 
-Puede observarse con facilidad que la tendencia de accidentes y lesionados cae abruptamente en el año 2020. Es evidente que la pandemia de COVID-19 ha tenido consecuencias sobre la forma en la que nos desplazamos por la ciudad. Profundizaremos esta cuestión con el modelo que hemos desarrollado en el punto 3.
+Puede observarse con facilidad que la tendencia de accidentes y lesionados cae abruptamente en el año 2020. Es evidente que la pandemia de COVID-19 ha tenido consecuencias sobre la forma en la que nos desplazamos por la ciudad.
 
 
 <br>
@@ -375,7 +375,7 @@ https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelon
 
 <br>
 
-## 3= Modelization
+## 3) Modelization
 
 Antes de modelizar deberemos definir la variable objetivo a predecir así como la granularidad o dimensionalidad, es decir el nivel de detalle u agregación de nuestros datos.
 
