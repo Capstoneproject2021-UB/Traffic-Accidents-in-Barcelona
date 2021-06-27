@@ -30,8 +30,6 @@ Si bien se trata del continente con menor siniestralidad en carreteras en el mun
 Por último, la Ciudad de Barcelona ha tenido durante los últimos 10 años resultados dispares: si bien el número de muertos se ha reducido considerablemente (39 muertos en 2010 - 22 muertos en 2019), el número de accidentes registrados se ha incrementado. Las restricciones de movilidad producto de la pandemia de COVID-19 claramente han tenido un efecto en la siniestralidad, dado que durante 2020 se han reducido un 38% los siniestros en la ciudad.
 En la actualidad, la ciudad cuenta con un "Plan local de seguridad vial 2019-2022", con el objetivo de reducir un 20% las victimas de accidentes.
 
-
-
 ## Project Overview
 
 El objetivo principal del presente proyecto es el de generar un modelo de aprendizaje automático capaz de catalogar información relacionada a accidentes de tránsito. Más precisamente, buscamos que el algoritmo pueda identificar si un determinado accidente de tránsito ha ocurrido en un marco de restricciones sanitarias, como las ocurridas como consecuencia de la Pandemia de COVID-19.
@@ -39,11 +37,11 @@ Para este proyecto, hemos utilizado información de los accidentes de tránsito 
 
 Dicha web, cuenta con un total de 5 diferentes dataset relacionados con accidentes de tránsito en la Ciudad. Cada dataset detalla cada uno de los accidentes ocurridos en la Ciudad (identificados con un número de expediente único) pero con información desde diferentes perspectivas. Los datasets son los siguientes:
 
-* People involved in accidents managed by the Police in the city of Barcelona 
-* Vehicles involved in accidents handled by the police in the city of Barcelona 
-* Accidents managed by the local police in the city of Barcelona
-* Description of the accidents' handled by the police in the city of Barcelona causality 
-* Accidents managed by the Guàrdia Urbana in the city of Barcelona according to type
+* *People involved in accidents managed by the Police in the city of Barcelona* 
+* *Vehicles involved in accidents handled by the police in the city of Barcelona* 
+* *Accidents managed by the local police in the city of Barcelona*
+* *Description of the accidents' handled by the police in the city of Barcelona causality* 
+* *Accidents managed by the Guàrdia Urbana in the city of Barcelona according to type*
 
 Para "alimentar el modelo", hemos usado el dataset nro 3 - **"Accidents managed by the local police in the city of Barcelona"**, con información desde el año 2010 a 2020. Cabe aclarar que solo el dataframe correspondiente al año 2020 contiene accidentes generados durante la pandemia de COVID-19, con lo cual nos hemos contactado con el Ayuntamiento de la Ciudad para solicitar información sobre accidentalidad durante 2021. Al día de hoy no hemos recibido dicha información.
 
@@ -58,8 +56,11 @@ Este trabajo, se encuentra organizado de la siguiente forma:
 * Un notebook con el nombre de *Modelos*. En el mismo, se utiliza una librería de auto Machine-Learning TPOT (<http://epistasislab.github.io/tpot/>) para seleccionar el modelo más adecuado al problema que estamos abordando.
 Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado para generar predicciones a un nivel de agregación por distrito y por mes. En caso que obtengamos dicha información en los siguientes días, modificaremos el modelo acorde a nuestro objetivo inicial: identificar aquellos accidentes en situación de restricción de la movilidad.
 
+<br>
 
 ## 1) Data preprocessing 
+
+<br>
 
  Para este proyecto hemos utilizado 2 datasets relacionados con accidentes viales, que el ayuntamiento de Barcelona publica anualmente en el portal *Open data Barcelona*. 
 
@@ -76,7 +77,11 @@ Ambos datasets se han utilizado para el análisis exploratorio, pero solo el seg
 
 A continuación, veremos un resumen del preposesado de datos realizado (incluyendo parte del codigo):
 
- 1.a) Primero leemos las 10 entradas de datos para luego homogeneizar la informacion contenida, quitando simbolos y eliminando columnas con informacion que no se encuentra en todo el conjunto de dataframes.
+<br>
+
+1.a) Primero leemos las 10 entradas de datos para luego homogeneizar la informacion contenida, quitando simbolos y eliminando columnas con informacion que no se encuentra en todo el conjunto de dataframes.
+
+<br>
 
 ```python
 import pandas as pd
@@ -224,8 +229,8 @@ def f_generate_covid_feature(p_df_covid):
 df_feature_covid = f_read_covid()
 df_feature_covid = f_generate_covid_feature(df_feature_covid)
 ```
-<br>
 
+<br>
 
 Se trata de un feature estandarizado del 0 al 10. Siendo 0 el periodo pre-covid y siendo 10 la máxima restricción de cuarentena domiciliaria que entró en vigor en marzo del 2020.
 Para ello necesitábamos una base de datos enfocada a las restricciones dónde poder discernir entre los diferentes niveles de restricciones que se han ido haciendo efectivos en las distintas fases. En concreto durante la segunda y tercera ola entramos en un nuevo escenario de medidas más locales y acotadas que requerían de una variable más compleja que un simple booleano indicando si estábamos en época COVID o no COVID: True/False.
@@ -239,8 +244,11 @@ Una pequeña base de datos generada con el objetivo de recopilar y estandarizar 
 Así obtenemos un CSV al cual bastará filtrar por España para obtener los datos que necesitamos y empezar a trabajar en nuestro nuevo feature. 
 Una consideración importante para mejorar los datos del Covid empleados, sería complementarlos con las restricciones autonómicas. En una hipotética segunda fase del proyecto, ésta sería sin duda una tarea interesante. 
 
+<br>
 
 1.d) Por último, unificamos las columnas de fecha e incorporamos el feature de COVID al dataframe: 
+
+<br>
 
 ```python
 # Merge section
@@ -254,12 +262,17 @@ df_accidents_union_all.drop(columns=['Date', 'dia_mes', 'mes_any'], inplace=True
 Hemos seguido el mismo proceso para el segundo dataset que hemos analizado (*Accidents managed by the local police in the city of Barcelona*) 
 
 
+<br>
 
 ## 2) Data Exploration
+
+<br>
 
 La información que hemos procesado en el punto anterior la hemos utilizado no solo para alimentar el modelo de aprendizaje automatico, sino tambien para elaborar un breve análisis sobre la evolución de la accidentalidad en los últimos años, y sus principales características.
 Para ello, hemos trabajado con las clásicas librerias de Python destinadas al análisis de datos. Incluyendo **Plotly**, una libreria para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos utilizado con Tableau para la creación de visualizaciones más complejas.
 
+
+<br>
 
 ### 2a) Accidentes en Barcelona - Una primera aproximación:
 
@@ -294,6 +307,8 @@ Del total de personas involucradas en accidentes, vemos que el 70% son conductor
 <br>
 
 ### 2b) Accidentes en Barcelona - Distribución estadística:
+
+<br>
 
 El siguiente gráfico refleja la distribución de accidentados a lo largo de las horas de un día. Puede verse como los niveles de accidentalidad comienzan a aumentar en el transcurso de la mañana, llegando al pico de accidentados a las 14hs pero revirtiendo la tendencia creciente a partir de las 18hs. Desde ese momento, los accidentes comienzan a reducirse.
 
@@ -343,6 +358,7 @@ Una vez más, es sencillo de observar la diferencia entre 2020 y un año previo 
 
 ### 2d) Accidentes en Barcelona - Vehiculos involucrados:
 
+<br>
 
 El 76% de los accidentes de tránsito ha involucrado a 2 o más vehiculos.
 
@@ -360,6 +376,8 @@ Definitivamente, los vehiculos de dos ruedas tienen predominancia en cuanto a la
 <br>
 
 ### 2e) Accidentes en Barcelona - Gráficos interactivos:
+
+<br>
 
 Para ampliar el análisis y apreciar mejor la información, hemos generado una serie de gráficos interactivos a través de **Tableau** que incluyen: un mapa interactivo con todos los accidentes ocurridos en el año 2020, una representación de accidentes por districto, y la evolución de accidentes mes a mes y día a día en cada año analizado.
 
@@ -381,6 +399,8 @@ Para ampliar el análisis y apreciar mejor la información, hemos generado una s
 <br>
 
 ## 3) Modelization
+
+<br>
 
 Antes de modelizar deberemos definir la variable objetivo a predecir así como la granularidad o dimensionalidad, es decir el nivel de detalle u agregación de nuestros datos.
 
