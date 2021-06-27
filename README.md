@@ -604,13 +604,10 @@ print("{0} INFO: mae: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:
 
 ## Conclusion
 
-## References
+## References 
 
-
-sources: 
-
-https://www.who.int/es/news-room/fact-sheets/detail/road-traffic-injuries
-https://ec.europa.eu/commission/presscorner/detail/es/ip_20_1003
-https://www.europarl.europa.eu/news/es/headlines/society/20190307STO30715/seguridad-vial-nuevas-medidas-europeas-para-reducir-los-accidentes-de-trafico
-https://opendata-ajuntament.barcelona.cat/data/en/dataset/accidents-persones-gu-bcn
-https://www.barcelona.cat/infobarcelona/es/nuevo-plan-de-seguridad-vial-para-reducir-en-un-20-a-las-victimas-de-accidentes-de-trafico_880868.html
+- https://www.who.int/es/news-room/fact-sheets/detail/road-traffic-injuries
+- https://ec.europa.eu/commission/presscorner/detail/es/ip_20_1003
+- https://www.europarl.europa.eu/news/es/headlines/society/20190307STO30715/seguridad-vial-nuevas-medidas-europeas-para-reducir-los-accidentes-de-trafico
+- https://opendata-ajuntament.barcelona.cat/data/en/dataset/accidents-persones-gu-bcn
+- https://www.barcelona.cat/infobarcelona/es/nuevo-plan-de-seguridad-vial-para-reducir-en-un-20-a-las-victimas-de-accidentes-de-trafico_880868.html
