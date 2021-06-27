@@ -342,7 +342,8 @@ En este caso, nos hemos centrado en los años 2019 y 2020 para facilitar la visu
 Los puntos pequeños representan accidentes en los cuales han tenido como resultado uno (o más) heridos de gravedad. Mientras que los puntos grandes representan el punto geográfico en el que ha ocurrido un accidente mortal.
 Los accidentes del año 2019 son de color rojo, y de azul los del 2020.
 
-Una vez más, es sencillo de apreciar la diferencia entre 2020 y un año previo a la pandemia. Vemos además como se concentran los accidentes, formando un triángulo entre la Avenida Diagonal y Gran Via de les Corts Catalanes (Eixample). 
+Una vez más, es sencillo de observar la diferencia entre 2020 y un año previo a la pandemia. Vemos además como se concentran los accidentes, formando un triángulo entre la Avenida Diagonal y Gran Via de les Corts Catalanes (Eixample). 
+
 
 <br>
 
@@ -362,9 +363,21 @@ Definitivamente, los vehiculos de dos ruedas tienen predominancia en cuanto a la
 
 ![Tabla10](Charts/chart10.png)
 
- a) Data Exploration
- b) Exploratory Visualization
- c) Relationship between the features
+<br>
+
+### 2e) Accidentes en Barcelona - Gráficos interactivos:
+
+Para ampliar el análisis y apreciar mejor la información, hemos generado una serie de gráficos interactivos a través de **Tableau** que incluyen: un mapa interactivo con todos los accidentes ocurridos en el año 2020, una representación de accidentes por districto, y la evolución de accidentes mes a mes y día a día en cada año analizado.
+
+<div class='tableauPlaceholder' id='viz1624784896392' style='position: relative'><noscript><a href='#'><img alt='                                             TRAFFIC ACCIDENTS IN BARCELONA ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;GD&#47;GD9F7WC8P&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;GD9F7WC8P' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;GD&#47;GD9F7WC8P&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /></object></div>  
+
+<div class='tableauPlaceholder' id='viz1624785136863' style='position: relative'><noscript><a href='#'><img alt='                                             TRAFFIC ACCIDENTS IN BARCELONA ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /></object></div>
+
+
+https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard1
+
+https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard2
+
 
 ## Modelization
 
