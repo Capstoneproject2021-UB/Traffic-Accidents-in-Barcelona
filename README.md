@@ -258,7 +258,6 @@ Hemos seguido el mismo proceso para el segundo dataset que hemos analizado (*Acc
 La información que hemos procesado en el punto anterior la hemos utilizado no solo para alimentar el modelo de aprendizaje automatico, sino tambien para elaborar un breve análisis sobre la evolución de la accidentalidad en los últimos años, y sus principales características.
 Para ello, hemos trabajado con las clásicas librerias de Python destinadas al análisis de datos. Incluyendo **Plotly**, una libreria para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos utilizado con Tableau para la creación de visualizaciones más complejas.
 
-<br>
 
 ### 2a) Accidentes en Barcelona - Una primera aproximación:
 
@@ -325,11 +324,10 @@ Exiample es el districto que acumula el mayor número de accidentes (y por ende 
 
 ![Tabla7](Charts/chart7.png)
 
+<br>
+
 Para tener una representación más exacta de la distribución de los accidentes a lo largo de la ciudad, hemos generado un mapa de la misma utilizando las librerias **Folium**. Cada registro del dataframe cuenta con las coordenadas del lugar del hecho, con lo cual hemos "ubicado" esta información en el mapa de la ciudad.
 En este caso, nos hemos centrado en los años 2019 y 2020 para facilitar la visualización.
-
-
-<br>
 
 ![Tabla9](Charts/chart9.png)
 
