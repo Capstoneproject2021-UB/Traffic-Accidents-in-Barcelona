@@ -56,11 +56,6 @@ Este trabajo, se encuentra organizado de la siguiente forma:
 Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado para generar predicciones a un nivel de agregación por distrito y por mes. En caso que obtengamos dicha información en los siguientes días, modificaremos el modelo acorde a nuestro objetivo inicial: identificar aquellos accidentes en situación de restricción de la movilidad.
 
 
-
-
-(TRABAJO EN PROCESO) 
-(TRABAJO EN PROCESO) 
-
 ## 1) Data preprocessing 
 
 <br>
@@ -369,17 +364,18 @@ Definitivamente, los vehiculos de dos ruedas tienen predominancia en cuanto a la
 
 Para ampliar el análisis y apreciar mejor la información, hemos generado una serie de gráficos interactivos a través de **Tableau** que incluyen: un mapa interactivo con todos los accidentes ocurridos en el año 2020, una representación de accidentes por districto, y la evolución de accidentes mes a mes y día a día en cada año analizado.
 
-<div class='tableauPlaceholder' id='viz1624784896392' style='position: relative'><noscript><a href='#'><img alt='                                             TRAFFIC ACCIDENTS IN BARCELONA ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;GD&#47;GD9F7WC8P&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;GD9F7WC8P' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;GD&#47;GD9F7WC8P&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /></object></div>  
-
-<div class='tableauPlaceholder' id='viz1624785136863' style='position: relative'><noscript><a href='#'><img alt='                                             TRAFFIC ACCIDENTS IN BARCELONA ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /></object></div>
-
+<div class='tableauPlaceholder' id='viz1624785345803' style='position: relative'><noscript><a href='#'><img alt='                                             TRAFFIC ACCIDENTS IN BARCELONA ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /></object></div>
 
 https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard1
+
+<div class='tableauPlaceholder' id='viz1624785136863' style='position: relative'><noscript><a href='#'><img alt='                                             TRAFFIC ACCIDENTS IN BARCELONA ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /></object></div>
 
 https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard2
 
 
-## Modelization
+<br>
+
+## 3= Modelization
 
 Antes de modelizar deberemos definir la variable objetivo a predecir así como la granularidad o dimensionalidad, es decir el nivel de detalle u agregación de nuestros datos.
 
@@ -618,7 +614,3 @@ https://ec.europa.eu/commission/presscorner/detail/es/ip_20_1003
 https://www.europarl.europa.eu/news/es/headlines/society/20190307STO30715/seguridad-vial-nuevas-medidas-europeas-para-reducir-los-accidentes-de-trafico
 https://opendata-ajuntament.barcelona.cat/data/en/dataset/accidents-persones-gu-bcn
 https://www.barcelona.cat/infobarcelona/es/nuevo-plan-de-seguridad-vial-para-reducir-en-un-20-a-las-victimas-de-accidentes-de-trafico_880868.html
-
-
-
-(WORK ON PROGRESS)
