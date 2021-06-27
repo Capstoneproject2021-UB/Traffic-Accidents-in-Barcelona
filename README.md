@@ -33,7 +33,7 @@ En la actualidad, la ciudad cuenta con un "Plan local de seguridad vial 2019-202
 ## Project Overview
 
 El objetivo principal del presente proyecto es el de generar un modelo de aprendizaje automático capaz de catalogar información relacionada a accidentes de tránsito. Más precisamente, buscamos que el algoritmo pueda identificar si un determinado accidente de tránsito ha ocurrido en un marco de restricciones sanitarias, como las ocurridas como consecuencia de la Pandemia de COVID-19.
-Para este proyecto, hemos utilizado información de los accidentes de tránsito ocurridos en la Ciudad de Barcelona, durante los últimos 10 años. Se trata de un dataset muy completo compartido por el Ayuntamiento de Barcelona, a través del sitio web: Open Data BCN (https://opendata-ajuntament.barcelona.cat).
+Para este proyecto, hemos utilizado información de los accidentes de tránsito ocurridos en la Ciudad de Barcelona, durante los últimos 10 años. Se trata de un dataset muy completo compartido por el Ayuntamiento de Barcelona, a través del sitio web: Open Data BCN (<https://opendata-ajuntament.barcelona.cat>).
 
 Dicha web, cuenta con un total de 5 diferentes dataset relacionados con accidentes de tránsito en la Ciudad. Cada dataset detalla cada uno de los accidentes ocurridos en la Ciudad (identificados con un número de expediente único) pero con información desde diferentes perspectivas. Los datasets son los siguientes:
 
@@ -53,7 +53,7 @@ Este trabajo, se encuentra organizado de la siguiente forma:
 * Un fichero con todos los dataframes de 2010 a 2020, correspondientes a los 2 dataset utilizados.
 * Un notebook llamado *ETL*, el cual homogeneiza la información y une los dataframes en 2 únicos archivos. Además, incorpora en dichos dataframes la "feature COVID": un valor entre rango 0 y 10. Donde 0 representa una situación previa a la existencia de la enfermedad, y 10 la mayor restricción a la movilidad ocurrida en España durante la pandemia (finales de Marzo 2020 - comienzos de Abril)
 * Un notebook llamado *Data analysis and exploration*. Con un análisis contextual sobre la accidentalidad entre 2010 a 2020 en la Ciudad.
-* Un notebook con el nombre de *Modelos*. En el mismo, se utiliza una librería de auto Machine-Learning TPOT (http://epistasislab.github.io/tpot/) para seleccionar el modelo más adecuado al problema que estamos abordando.
+* Un notebook con el nombre de *Modelos*. En el mismo, se utiliza una librería de auto Machine-Learning TPOT (<http://epistasislab.github.io/tpot/>) para seleccionar el modelo más adecuado al problema que estamos abordando.
 Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado para generar predicciones a un nivel de agregación por distrito y por mes. En caso que obtengamos dicha información en los siguientes días, modificaremos el modelo acorde a nuestro objetivo inicial: identificar aquellos accidentes en situación de restricción de la movilidad.
 
 
@@ -229,9 +229,9 @@ Se trata de un feature estandarizado del 0 al 10. Siendo 0 el periodo pre-covid 
 Para ello necesitábamos una base de datos enfocada a las restricciones dónde poder discernir entre los diferentes niveles de restricciones que se han ido haciendo efectivos en las distintas fases. En concreto durante la segunda y tercera ola entramos en un nuevo escenario de medidas más locales y acotadas que requerían de una variable más compleja que un simple booleano indicando si estábamos en época COVID o no COVID: True/False.
 Buscando resolver este invonvenient, encontramos la siguiente base de datos:
 
-https://github.com/OxCGRT/covid-policy-tracker
+<https://github.com/OxCGRT/covid-policy-tracker>
 
-https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv
+<https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv>
 
 Una pequeña base de datos generada con el objetivo de recopilar y estandarizar las restricciones por países. Adicionalmente, cuenta con información más genérica cómo el número de casos confirmados, muertes, inversión estatal, etc. Aunque nosotros haremos énfasis en recuperar los datos sobre las restricciones como hemos indicado.
 Así obtenemos un CSV al cual bastará filtrar por España para obtener los datos que necesitamos y empezar a trabajar en nuestro nuevo feature. 
@@ -363,13 +363,19 @@ Definitivamente, los vehiculos de dos ruedas tienen predominancia en cuanto a la
 
 Para ampliar el análisis y apreciar mejor la información, hemos generado una serie de gráficos interactivos a través de **Tableau** que incluyen: un mapa interactivo con todos los accidentes ocurridos en el año 2020, una representación de accidentes por districto, y la evolución de accidentes mes a mes y día a día en cada año analizado.
 
-<div class='tableauPlaceholder' id='viz1624785345803' style='position: relative'><noscript><a href='#'><img alt='                                             TRAFFIC ACCIDENTS IN BARCELONA ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /></object></div>
+<br>
 
-https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard1
+![Tabla12](Charts/chart12.png)
 
-<div class='tableauPlaceholder' id='viz1624785136863' style='position: relative'><noscript><a href='#'><img alt='                                             TRAFFIC ACCIDENTS IN BARCELONA ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;TrafficaccidentsinBarcelonaLMM21-6-21&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' /></object></div>
 
-https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard2
+<https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard1>
+
+
+<br>
+
+![Tabla13](Charts/chart13.png)
+
+<https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard2>
 
 
 <br>
@@ -605,8 +611,8 @@ print("{0} INFO: mae: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:
 
 ## References 
 
-- https://www.who.int/es/news-room/fact-sheets/detail/road-traffic-injuries
-- https://ec.europa.eu/commission/presscorner/detail/es/ip_20_1003
-- https://www.europarl.europa.eu/news/es/headlines/society/20190307STO30715/seguridad-vial-nuevas-medidas-europeas-para-reducir-los-accidentes-de-trafico
-- https://opendata-ajuntament.barcelona.cat/data/en/dataset/accidents-persones-gu-bcn
-- https://www.barcelona.cat/infobarcelona/es/nuevo-plan-de-seguridad-vial-para-reducir-en-un-20-a-las-victimas-de-accidentes-de-trafico_880868.html
+- <https://www.who.int/es/news-room/fact-sheets/detail/road-traffic-injuries>
+- <https://ec.europa.eu/commission/presscorner/detail/es/ip_20_1003>
+- <https://www.europarl.europa.eu/news/es/headlines/society/20190307STO30715/seguridad-vial-nuevas-medidas-europeas-para-reducir-los-accidentes-de-trafico>
+- <https://opendata-ajuntament.barcelona.cat/data/en/dataset/accidents-persones-gu-bcn>
+- <https://www.barcelona.cat/infobarcelona/es/nuevo-plan-de-seguridad-vial-para-reducir-en-un-20-a-las-victimas-de-accidentes-de-trafico_880868.html>
