@@ -320,9 +320,9 @@ No observamos ninguna tendencia relevante respecto a los días del mes.
 
 ### 2c) Accidentes en Barcelona - Distribución geográfica:
 
-Exiample es el districto que acumula el mayor número de accidentes (y por ende de victimas).
-
 <br>
+
+Exiample es el districto que acumula el mayor número de accidentes (y por ende de victimas).
 
 ![Tabla7](Charts/chart7.png)
 
