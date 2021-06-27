@@ -58,8 +58,6 @@ Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado 
 
 ## 1) Data preprocessing 
 
-<br>
- 
  Para este proyecto hemos utilizado 2 datasets relacionados con accidentes viales, que el ayuntamiento de Barcelona publica anualmente en el portal *Open data Barcelona*. 
 
 * **People involved in accidents managed by the Police in the city of Barcelona**: *List of people who have been involved in an accident managed by the Police in the city of Barcelona have suffered some type of injury ( slightly wounded, serious injuries or death). It includes a description of the person ( driver, passenger or pedestrian), sex, age, vehicle associated person if the cause was pedestrian*
