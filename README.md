@@ -23,16 +23,16 @@ De acuerdo a la Organización Mundial de la Salud, como consecuencia de accident
 * La mitad de los accidentes ocurridos, tienen consecuencias sobre peatones, ciclistas y motociclistas.
 * Factores de riesgo: velocidad, conducción bajo los efectos del alcohol, no utilización de elementos de seguridad (cinturón de seguridad, casco, etc), conducción distraída e infraestructura vial insegura.
 
-En el marco de la Union Europea, en la actualidad se producen por año alrededor de 49 muertes por millón de habitantes, frente a las 174 por millón en el mundo.
-Si bien se trata del continente con menor siniestralidad en carreteras en el mundo, el obejtivo para 2030 es reducir a la mitad el número de muertes y lesiones graves. 
+En el marco de la Unión Europea, en la actualidad se producen por año alrededor de 49 muertes por millón de habitantes, frente a las 174 por millón en el mundo.
+Si bien se trata del continente con menor siniestralidad en carreteras en el mundo, el objetivo para 2030 es reducir a la mitad el número de muertes y lesiones graves. 
 <br>En el año 2020, se han visto reducidos los niveles de siniestralidad en todo el continente, y según la Comisión Europea, "el menor volumen de tráfico como consecuencia de la pandemia sanitaria ha tenido un impacto directo, aunque no medible, en esta bajada de la siniestralidad vial". En el caso de España, se encuentra entre los 4 primeros países europeos con menor número de muertes (29 por millón).
 
 Por último, la Ciudad de Barcelona ha tenido durante los últimos 10 años resultados dispares: si bien el número de muertos se ha reducido considerablemente (39 muertos en 2010 - 22 muertos en 2019), el número de accidentes registrados se ha incrementado. Las restricciones de movilidad producto de la pandemia de COVID-19 claramente han tenido un efecto en la siniestralidad, dado que durante 2020 se han reducido un 38% los siniestros en la ciudad.
-En la actualidad, la ciudad cuenta con un "Plan local de seguridad vial 2019-2022", con el objetivo de reducir un 20% las victimas de accidentes.
+En la actualidad, la ciudad cuenta con un "Plan local de seguridad vial 2019-2022", con el objetivo de reducir un 20% las víctimas de accidentes.
 
 ## Project Overview
 
-El objetivo principal del presente proyecto es el de generar un modelo de aprendizaje automático capaz de catalogar información relacionada a accidentes de tránsito. Más precisamente, buscamos que el algoritmo pueda identificar si un determinado accidente de tránsito ha ocurrido en un marco de restricciones sanitarias, como las ocurridas como consecuencia de la Pandemia de COVID-19.
+El objetivo principal del presente proyecto es el de generar un modelo de aprendizaje automático capaz de catalogar información relacionada a accidentes de tránsito. Más precisamente, buscamos que el algoritmo pueda identificar si un determinado accidente de tránsito ha ocurrido en un marco de restricciones sanitarias, como las ocurridas como consecuencia de la pandemia de COVID-19.
 Para este proyecto, hemos utilizado información de los accidentes de tránsito ocurridos en la Ciudad de Barcelona, durante los últimos 10 años. Se trata de un dataset muy completo compartido por el Ayuntamiento de Barcelona, a través del sitio web: Open Data BCN (<https://opendata-ajuntament.barcelona.cat>).
 
 Dicha web, cuenta con un total de 5 diferentes dataset relacionados con accidentes de tránsito en la Ciudad. Cada dataset detalla cada uno de los accidentes ocurridos en la Ciudad (identificados con un número de expediente único) pero con información desde diferentes perspectivas. Los datasets son los siguientes:
@@ -68,18 +68,18 @@ Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado 
 
 * **Accidents managed by the local police in the city of Barcelona**: *List of accidents handled by the local police in the city of Barcelona. Incorporates the number of injuries by severity, the number of vehicles and the point of impact.*
 
-El primero es un registro con todas las personas que formaron parte en cada uno de los accidentes registrados. Por lo que podemos tener 1,2,3 o 4 filas correspondientes al mismo accidente. Todo depende del nómero de personas involucradas. Cada dataframe cuenta con 31 campos, entre los que se encuentran: fecha, barrio, descripción de la persona, edad, descripción del vehiculo involucrado, entre otros. La clave principal es el número de expediente.
+El primero es un registro con todas las personas que formaron parte en cada uno de los accidentes registrados. Por lo que podemos tener 1,2,3 o 4 filas correspondientes al mismo accidente. Todo depende del número de personas involucradas. Cada dataframe cuenta con 31 campos, entre los que se encuentran: fecha, barrio, descripción de la persona, edad, descripción del vehículo involucrado, entre otros. La clave principal es el número de expediente.
 El segundo es un resumen del accidente ocurrido y sus consecuencias. Cada dataframe cuenta con 26 campos, siendo los más importantes para nuestro análisis: número de lesionados leves, graves y muertos. La clave principal es el número de expediente.
 
 Cada dataset posee un dataframe por año, iniciando el registro en el año 2010 y finalizando en 2020. Por lo que hemos trabajado con un total de 20 archivos.
 
 Ambos datasets se han utilizado para el análisis exploratorio, pero solo el segundo para la elaboración del modelo. 
 
-A continuación, veremos un resumen del preposesado de datos realizado (incluyendo parte del codigo):
+A continuación, veremos un resumen del preprocesado de datos realizado (incluyendo parte del codigo):
 
 <br>
 
-1.a) Primero leemos las 10 entradas de datos para luego homogeneizar la informacion contenida, quitando simbolos y eliminando columnas con informacion que no se encuentra en todo el conjunto de dataframes.
+1.a) Primero leemos las 10 entradas de datos para luego homogeneizar la información contenida, quitando símbolos y eliminando columnas con información que no se encuentra en todo el conjunto de dataframes.
 
 <br>
 
@@ -234,7 +234,7 @@ df_feature_covid = f_generate_covid_feature(df_feature_covid)
 
 Se trata de un feature estandarizado del 0 al 10. Siendo 0 el periodo pre-covid y siendo 10 la máxima restricción de cuarentena domiciliaria que entró en vigor en marzo del 2020.
 Para ello necesitábamos una base de datos enfocada a las restricciones dónde poder discernir entre los diferentes niveles de restricciones que se han ido haciendo efectivos en las distintas fases. En concreto durante la segunda y tercera ola entramos en un nuevo escenario de medidas más locales y acotadas que requerían de una variable más compleja que un simple booleano indicando si estábamos en época COVID o no COVID: True/False.
-Buscando resolver este invonvenient, encontramos la siguiente base de datos:
+Buscando resolver este invonveniente, encontramos la siguiente base de datos:
 
 <https://github.com/OxCGRT/covid-policy-tracker>
 
@@ -268,8 +268,8 @@ Hemos seguido el mismo proceso para el segundo dataset que hemos analizado (*Acc
 
 <br>
 
-La información que hemos procesado en el punto anterior la hemos utilizado no solo para alimentar el modelo de aprendizaje automatico, sino tambien para elaborar un breve análisis sobre la evolución de la accidentalidad en los últimos años, y sus principales características.
-Para ello, hemos trabajado con las clásicas librerias de Python destinadas al análisis de datos. Incluyendo **Plotly**, una libreria para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos utilizado con Tableau para la creación de visualizaciones más complejas.
+La información que hemos procesado en el punto anterior la hemos utilizado no solo para alimentar el modelo de aprendizaje automático, sino también para elaborar un breve análisis sobre la evolución de la accidentalidad en los últimos años, y sus principales características.
+Para ello, hemos trabajado con las clásicas librerías de Python destinadas al análisis de datos. Incluyendo **Plotly**, una librería para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos utilizado con Tableau para la creación de visualizaciones más complejas.
 
 
 <br>
@@ -317,7 +317,7 @@ El siguiente gráfico refleja la distribución de accidentados a lo largo de las
 ![Tabla4](Charts/chart4.png)
 
 
-Respecto a la accidentalidad en el transcurso de la semana. Se ve un claro crecimiento a lo largo de la semana laboral, llegando a un pico los días viernes. Fines de de semana los accidentes se reducen.
+Respecto a la accidentalidad en el transcurso de la semana. Se ve un claro crecimiento a lo largo de la semana laboral, llegando a un pico los días viernes. Los fines de de semana los accidentes se reducen.
 
 <br>
 
@@ -337,13 +337,13 @@ No observamos ninguna tendencia relevante respecto a los días del mes.
 
 <br>
 
-Exiample es el districto que acumula el mayor número de accidentes (y por ende de victimas).
+Exiample es el distrito que acumula el mayor número de accidentes (y por ende de víctimas).
 
 ![Tabla7](Charts/chart7.png)
 
 <br>
 
-Para tener una representación más exacta de la distribución de los accidentes a lo largo de la ciudad, hemos generado un mapa de la misma utilizando las librerias **Folium**. Cada registro del dataframe cuenta con las coordenadas del lugar del hecho, con lo cual hemos "ubicado" esta información en el mapa de la ciudad.
+Para tener una representación más exacta de la distribución de los accidentes a lo largo de la ciudad, hemos generado un mapa de la misma utilizando las librerías **Folium**. Cada registro del dataframe cuenta con las coordenadas del lugar del hecho, con lo cual hemos "ubicado" esta información en el mapa de la ciudad.
 En este caso, nos hemos centrado en los años 2019 y 2020 para facilitar la visualización.
 
 ![Tabla9](Charts/chart9.png)
@@ -351,7 +351,7 @@ En este caso, nos hemos centrado en los años 2019 y 2020 para facilitar la visu
 Los puntos pequeños representan accidentes en los cuales han tenido como resultado uno (o más) heridos de gravedad. Mientras que los puntos grandes representan el punto geográfico en el que ha ocurrido un accidente mortal.
 Los accidentes del año 2019 son de color rojo, y de azul los del 2020.
 
-Una vez más, es sencillo de observar la diferencia entre 2020 y un año previo a la pandemia. Vemos además como se concentran los accidentes, formando un triángulo entre la Avenida Diagonal y Gran Via de les Corts Catalanes (Eixample). 
+Una vez más, es sencillo de observar la diferencia entre 2020 y un año previo a la pandemia. Vemos además cómo se concentran los accidentes, formando un triángulo entre la Avenida Diagonal y Gran Via de les Corts Catalanes (Eixample). 
 
 
 <br>
@@ -367,7 +367,7 @@ El 76% de los accidentes de tránsito ha involucrado a 2 o más vehiculos.
 ![Tabla8](Charts/chart8.png)
 
 
-Definitivamente, los vehiculos de dos ruedas tienen predominancia en cuanto a la participación en accidentes. Dentro de este grupo, las motocicletas destacan como el principal vehiculo involucrado.
+Definitivamente, los vehículos de dos ruedas tienen predominancia en cuanto a la participación en accidentes. Dentro de este grupo, las motocicletas destacan como el principal vehículo involucrado.
 
 <br>
 
