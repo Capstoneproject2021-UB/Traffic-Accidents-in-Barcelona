@@ -629,6 +629,20 @@ print("{0} INFO: mae: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:
 
 ## Conclusion
 
+Las primeras pruebas y aproximaciones trataron de predecir el número de accidentes, evidenciaron la necesidad de una agrupación a un nivel superior. Los accidentes tienen una variabilidad demasiado elevada que no puede ser controlada ni modelada. Agrupando a niveles superiores como meses y distritos suavizaremos ese efecto tratando de capturar los patrones estacionales.  
+
+Una vez definido el nivel de agrupación el siguiente problema ha sido la falta de datos históricos con covid. Pese a disponer de toda una decada de registros históricos meramente contamos con unos meses para entrenar nuestros modelos con datos Covid. Contactamos con el Ajuntament de Barcelona para conseguir los datos del 2021 disponibles y así aumentar el bagaje histórico, desafortunadamente a la ocnclusión de este proyecto aún no contamos con ellos. Para mitigar este problema hemos decidido entrenar hasta agosto del 2020 y nos autoevaluaremos con los últimos 4 meses del año. De esta manera los modelos tendrán 6 meses de información para aprender, como veremos, insuficiente. 
+
+![conclusions2](Charts/conclusions2.PNG)
+
+Hemos utilizado varias métricas para evaluar de forma objetiva el desempeño. Recordemos que empleamos 2 librerías de AutoML que han sido testeada con el feature Covid que dota de una nueva dimensión a nuestros modelos. 
+
+![conclusions1](Charts/conclusions1.PNG)
+
+Como podemos observar, el desempeño de la variable Covid no ha sido fructifero y ha terminado confundiendo a los modelos sin aportar el valor esperado, esto se debe a la falta de histórico que es un elemento clave en el ML. Recordemos que 9/10 años no disponen de datos Covid por lo que el feature ha computado un 0 en todos ellos y no ha sabido interpretar correctamente los valores del último año.
+
+En cuanto a las librerías MLJar ha proporcionado las predicciones más precisas excluyendo el feature de Covid, aunque también ha sido la peor computándolo. Por lo que no es posible concluir una mayor eficiencia. Ambas son librería robustas que ofrecerán un mejor o peor desempeño en función de la tipología de datos y los parametros usados. 
+
 ## References 
 
 - <https://www.who.int/es/news-room/fact-sheets/detail/road-traffic-injuries>
