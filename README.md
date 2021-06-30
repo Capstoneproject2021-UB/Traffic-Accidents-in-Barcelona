@@ -647,6 +647,13 @@ Como podemos observar, el desempeño de la variable Covid no ha sido fructifero 
 
 En cuanto a las librerías MLJar ha proporcionado las predicciones más precisas excluyendo el feature de Covid, aunque también ha sido la peor computándolo. Por lo que no es posible concluir una mayor eficiencia. Ambas son librería robustas que ofrecerán un mejor o peor desempeño en función de la tipología de datos y los parametros usados. 
 
+Por último, y respecto a lo observado en los análisis que hemos realizado sobre el historico de accidentes, podemos concluir que:
+
+- Las restricciones asociadas a la pandemia de COVID-19 han tenido como efecto colateral positivo la reducción en la accidentalidad en la ciudad. Lo que a su vez resulta en una reducción en el número de muertos y lesionados.
+- Los niveles de accidentalidad están fuertemente relacionados con los niveles de movilidad. Esta relación puede observarse no solo con la baja de accidentes durante 2020, sino por la tendencia al incremento de siniestros durante horarios laborales y en los días de semana .
+- La presencia proponderante de vehiculos de 2 ruedas como participes de accidentes demuestra un riesgo extra asociado al uso de estos vehiculos. Para la prevención de accidentes es fundamental promover el uso responsable de bicicletas y motos al mismo tiempo que se hace necesario continuar con la construcción de carriles exclusivos para estos vehiculos.
+
+
 ## References 
 
 - <https://www.who.int/es/news-room/fact-sheets/detail/road-traffic-injuries>
