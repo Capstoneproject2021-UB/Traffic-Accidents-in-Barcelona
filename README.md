@@ -234,7 +234,7 @@ df_feature_covid = f_generate_covid_feature(df_feature_covid)
 
 Se trata de un feature estandarizado del 0 al 10. Siendo 0 el periodo pre-covid y siendo 10 la máxima restricción de cuarentena domiciliaria que entró en vigor en marzo del 2020.
 Para ello necesitábamos una base de datos enfocada a las restricciones dónde poder discernir entre los diferentes niveles de restricciones que se han ido haciendo efectivos en las distintas fases. En concreto durante la segunda y tercera ola entramos en un nuevo escenario de medidas más locales y acotadas que requerían de una variable más compleja que un simple booleano indicando si estábamos en época COVID o no COVID: True/False.
-Buscando resolver este invonveniente, encontramos la siguiente base de datos:
+Buscando resolver este inconveniente, encontramos la siguiente base de datos:
 
 <https://github.com/OxCGRT/covid-policy-tracker>
 
