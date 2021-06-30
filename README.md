@@ -389,7 +389,7 @@ Para ampliar el análisis y apreciar mejor la información, hemos generado una s
 <https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard1>
 
 - Mapa de la ciudad de Barcelona, donde se puede verificar que la incidencia de accidentes es bastante superior (“bubles” rojas y de dimensiones superiores) en la zona geográfica que corresponde al Eixample (constituida esencialmente por calles largas y anchas que cruzan toda la ciudad, cómo es el caso de la Avg. Diagonal, Gran vía y Aragó);
-- “Tree map” de la ciudad de Barcelona, que nos permite corroborar los datos presentados anteriormente: Eixample cómo el distrito con más accidentes (30,143), seguido por San Martí (12,421) y Sarrià-Sant Gervasi (11,514);
+- “Tree map” de la ciudad de Barcelona, que nos permite corroborar los datos presentados anteriormente: Eixample como el distrito con más accidentes (30,143), seguido por San Martí (12,421) y Sarrià-Sant Gervasi (11,514);
 - Gráfico de la evolución mensual del número de accidentes respecto al período 2010-2020 en la ciudad de Barcelona. Resulta muy obvio el impacto generado por la implementación de medidas de confinamiento más restrictivas para control de la pandemia (número de accidentes bastante inferior en Abril de 2020, alguna tendencia de disminución en Octubre/Noviembre). En agosto se puede visualizar un número bastante inferior de accidentes con respecto a cualquier año, señalando el período más habitual de vacaciones donde una parte considerable de los locales “abandona” la ciudad.
 
 <br>
