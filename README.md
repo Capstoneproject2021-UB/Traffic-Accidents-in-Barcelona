@@ -19,7 +19,7 @@ De acuerdo a la Organización Mundial de la Salud, como consecuencia de accident
 
 **Principales datos:**
 
-* Los accidentes son un riesgo muy superior para niños y jóvenes: Se trata de la primer causa de muerte en personas de entre 5 y 29 años.
+* Los accidentes son un riesgo muy superior para niños y jóvenes: Se trata de la primera causa de muerte en personas de entre 5 y 29 años.
 * La mitad de los accidentes ocurridos, tienen consecuencias sobre peatones, ciclistas y motociclistas.
 * Factores de riesgo: exceso de velocidad, conducción bajo los efectos del alcohol, no utilización de elementos de seguridad (cinturón de seguridad, casco, etc), conducción distraída e infraestructura vial insegura.
 
@@ -388,6 +388,9 @@ Para ampliar el análisis y apreciar mejor la información, hemos generado una s
 
 <https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard1>
 
+- Mapa de la ciudad de Barcelona, donde se puede verificar que la incidencia de accidentes es bastante superior (“bubles” rojas y de dimensiones superiores) en la zona geográfica que corresponde al Eixample (constituida esencialmente por calles largas y anchas que cruzan toda la ciudad, cómo es el caso de la Avg. Diagonal, Gran vía y Aragó);
+- “Tree map” de la ciudad de Barcelona, que nos permite corroborar los datos presentados anteriormente: Eixample cómo el distrito con más accidentes (30,143), seguido por San Martí (12,421) y Sarrià-Sant Gervasi (11,514);
+- Gráfico de la evolución mensual del número de accidentes respecto al período 2010-2020 en la ciudad de Barcelona. Resulta muy obvio el impacto generado por la implementación de medidas de confinamiento más restrictivas para control de la pandemia (número de accidentes bastante inferior en Abril de 2020, alguna tendencia de disminución en Octubre/Noviembre). En agosto se puede visualizar un número bastante inferior de accidentes con respecto a cualquier año, señalando el período más habitual de vacaciones donde una parte considerable de los locales “abandona” la ciudad.
 
 <br>
 
@@ -395,6 +398,7 @@ Para ampliar el análisis y apreciar mejor la información, hemos generado una s
 
 <https://public.tableau.com/app/profile/miguel.vaz/viz/TrafficaccidentsinBarcelonaLMM21-6-21/Dashboard2>
 
+En el Dashboard 2, introducimos un gráfico de la evolución día a día del número de accidentes respecto al período 2010-2020 en la ciudad de Barcelona. En general en años anteriores a 2020, el número de accidentes aumenta entre lunes y viernes y baja considerablemente el fin de semana (sábado y domingo). En 2020, se puede visualizar algún tipo de cambio: el día con más incidencia de accidentes sería el jueves – facto que puede ser explicado a través de las medidas de confinamiento regional/comarcal, pues las personas eran desaconsejadas/prohibidas de moverse en sus vehículos durante el viernes y el lunes por la madrugada, y por eso lo hacían el propio jueves). Esto explica igualmente que el lunes hubiera un poco más de accidentes, pues correspondería al período que los locales volvían a sus casas y / o sus trabajos, ya durante la franja horaria que se permitía la movilidad.
 
 <br>
 
