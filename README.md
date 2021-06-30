@@ -269,7 +269,7 @@ Hemos seguido el mismo proceso para el segundo dataset que hemos analizado (*Acc
 <br>
 
 La información que hemos procesado en el punto anterior la hemos utilizado no solo para alimentar el modelo de aprendizaje automático, sino también para elaborar un breve análisis sobre la evolución de la accidentalidad en los últimos años, y sus principales características.
-Para ello, hemos trabajado con las clásicas librerías de Python destinadas al análisis de datos. Incluyendo **Plotly**, una librería para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos utilizado con Tableau para la creación de visualizaciones más complejas.
+Para ello, hemos trabajado con las clásicas librerías de Python destinadas al análisis de datos. Incluyendo **Plotly**, una librería para la elaboración de gráficos y **Folium**, para el trabajo con datos geoespaciales. Por último, hemos utilizado con **Tableau** para la creación de visualizaciones más complejas.
 
 
 <br>
