@@ -637,7 +637,7 @@ Las primeras pruebas y aproximaciones trataron de predecir el número de acciden
 
 Una vez definido el nivel de agrupación el siguiente problema ha sido la falta de datos históricos con covid. Pese a disponer de toda una decada de registros históricos meramente contamos con unos meses para entrenar nuestros modelos con datos Covid. Contactamos con el Ajuntament de Barcelona para conseguir los datos del 2021 disponibles y así aumentar el bagaje histórico, desafortunadamente a la ocnclusión de este proyecto aún no contamos con ellos. Para mitigar este problema hemos decidido entrenar hasta agosto del 2020 y nos autoevaluaremos con los últimos 4 meses del año. De esta manera los modelos tendrán 6 meses de información para aprender, como veremos, insuficiente. 
 
-![conclusions2](Charts/conclusions2.PNG)
+![conclusions2](Charts/conclusions2.png)
 
 Hemos utilizado varias métricas para evaluar de forma objetiva el desempeño. Recordemos que empleamos 2 librerías de AutoML que han sido testeada con el feature Covid que dota de una nueva dimensión a nuestros modelos. 
 
