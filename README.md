@@ -32,7 +32,7 @@ En la actualidad, la ciudad cuenta con un "Plan local de seguridad vial 2019-202
 
 ## Project Overview
 
-El objetivo principal del presente proyecto es el de generar un modelo de aprendizaje automático capaz de catalogar información relacionada a accidentes de tránsito. Más precisamente, buscamos que el algoritmo pueda identificar si un determinado accidente de tránsito ha ocurrido en un marco de restricciones sanitarias, como las ocurridas como consecuencia de la pandemia de COVID-19.
+El principal objetivo del proyecto es generar predicciones mediante los modelos de aprendizaje automáticos que sea capaz de predecir los accidentes venideros.
 Para este proyecto, hemos utilizado información de los accidentes de tránsito ocurridos en la Ciudad de Barcelona, durante los últimos 10 años. Se trata de un dataset muy completo compartido por el Ayuntamiento de Barcelona, a través del sitio web: Open Data BCN (<https://opendata-ajuntament.barcelona.cat>).
 
 Dicha web, cuenta con un total de 5 diferentes dataset relacionados con accidentes de tránsito en la Ciudad. Cada dataset detalla cada uno de los accidentes ocurridos en la Ciudad (identificados con un número de expediente único) pero con información desde diferentes perspectivas. Los datasets son los siguientes:
@@ -71,8 +71,7 @@ Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado 
 El primero es un registro con todas las personas que formaron parte en cada uno de los accidentes registrados. Por lo que podemos tener 1,2,3 o 4 filas correspondientes al mismo accidente. Todo depende del número de personas involucradas. Cada dataframe cuenta con 31 campos, entre los que se encuentran: fecha, barrio, descripción de la persona, edad, descripción del vehículo involucrado, entre otros. La clave principal es el número de expediente.
 El segundo es un resumen del accidente ocurrido y sus consecuencias. Cada dataframe cuenta con 26 campos, siendo los más importantes para nuestro análisis: número de lesionados leves, graves y muertos. La clave principal es el número de expediente.
 
-Cada dataset posee un dataframe por año, iniciando el registro en el año 2010 y finalizando en 2020. Por lo que hemos trabajado con un total de 20 archivos.
-
+Cada fichero corresponde a un dataframe por año, iniciando el registro en el año 2010 y finalizando en 2020. Concurrencia para las dos tipologías de fichero, por lo que hemos trabajado con un total de 20 archivos.
 Ambos datasets se han utilizado para el análisis exploratorio, pero solo el segundo para la elaboración del modelo. 
 
 A continuación, veremos un resumen del preprocesado de datos realizado (incluyendo parte del codigo):
@@ -232,7 +231,7 @@ df_feature_covid = f_generate_covid_feature(df_feature_covid)
 
 <br>
 
-Se trata de un feature estandarizado del 0 al 10. Siendo 0 el periodo pre-covid y siendo 10 la máxima restricción de cuarentena domiciliaria que entró en vigor en marzo del 2020.
+Se trata de un feature estandarizado del 0 al 10. Siendo 0 el periodo pre-covid y siendo 10 la máxima combinación de restricciones de movilidad registradas desde marzo del 2020.
 Para ello necesitábamos una base de datos enfocada a las restricciones dónde poder discernir entre los diferentes niveles de restricciones que se han ido haciendo efectivos en las distintas fases. En concreto durante la segunda y tercera ola entramos en un nuevo escenario de medidas más locales y acotadas que requerían de una variable más compleja que un simple booleano indicando si estábamos en época COVID o no COVID: True/False.
 Buscando resolver este inconveniente, encontramos la siguiente base de datos:
 
@@ -300,6 +299,8 @@ Puede observarse con facilidad que la tendencia de accidentes y lesionados cae a
 
 <br>
 
+Tipología de victimas implicadas:
+
 ![Tabla11](Charts/chart11.png)
 
 Del total de personas involucradas en accidentes, vemos que el 70% son conductores del vehiculo en cuestión. Solo el 10% son peatones.
@@ -314,6 +315,8 @@ El siguiente gráfico refleja la distribución de accidentados a lo largo de las
 
 <br>
 
+Distribución accidentes por horario:
+
 ![Tabla4](Charts/chart4.png)
 
 
@@ -321,12 +324,16 @@ Respecto a la accidentalidad en el transcurso de la semana. Se ve un claro creci
 
 <br>
 
+Severidad de los accidentes por día de la semana:
+
 ![Tabla5](Charts/chart5.png)
 
 
 No observamos ninguna tendencia relevante respecto a los días del mes.
 
 <br>
+
+Severidad de los accidentes por día del mes:
 
 ![Tabla6](Charts/chart6.png)
 
@@ -338,6 +345,8 @@ No observamos ninguna tendencia relevante respecto a los días del mes.
 <br>
 
 Exiample es el distrito que acumula el mayor número de accidentes (y por ende de víctimas).
+
+Severidad de los accidentes por distrito:
 
 ![Tabla7](Charts/chart7.png)
 
@@ -631,21 +640,27 @@ mae = mean_absolute_error(df_test_y, predictions)
 print("{0} INFO: mae: {1}".format(datetime.datetime.now().strftime('%d/%m/%Y-%H:%M:%S'), mae))
 ```
 
-## Conclusion
+## Conclusión
 
 Las primeras pruebas y aproximaciones trataron de predecir el número de accidentes, evidenciaron la necesidad de una agrupación a un nivel superior. Los accidentes tienen una variabilidad demasiado elevada que no puede ser controlada ni modelada. Agrupando a niveles superiores como meses y distritos suavizaremos ese efecto tratando de capturar los patrones estacionales.  
 
-Una vez definido el nivel de agrupación el siguiente problema ha sido la falta de datos históricos con covid. Pese a disponer de toda una decada de registros históricos meramente contamos con unos meses para entrenar nuestros modelos con datos Covid. Contactamos con el Ajuntament de Barcelona para conseguir los datos del 2021 disponibles y así aumentar el bagaje histórico, desafortunadamente a la ocnclusión de este proyecto aún no contamos con ellos. Para mitigar este problema hemos decidido entrenar hasta agosto del 2020 y nos autoevaluaremos con los últimos 4 meses del año. De esta manera los modelos tendrán 6 meses de información para aprender, como veremos, insuficiente. 
+Una vez definido el nivel de agrupación el siguiente problema ha sido la falta de datos históricos con covid. Pese a disponer de toda una decada de registros históricos meramente contamos con unos meses para entrenar nuestros modelos con datos Covid. Contactamos con el Ajuntament de Barcelona para conseguir los datos del 2021 disponibles y así aumentar el bagaje histórico, desafortunadamente a la conclusión de este proyecto aún no contamos con ellos. Para mitigar este problema hemos decidido entrenar hasta agosto del 2020 y nos autoevaluaremos con los últimos 4 meses del año. De esta manera los modelos tendrán 6 meses de información para aprender, como veremos, insuficiente. 
 
 ![conclusions2](Charts/conclusions2.png)
 
-Hemos utilizado varias métricas para evaluar de forma objetiva el desempeño. Recordemos que empleamos 2 librerías de AutoML que han sido testeada con el feature Covid que dota de una nueva dimensión a nuestros modelos. 
+Hemos utilizado varias métricas para evaluar de forma objetiva el desempeño. Recordemos que empleamos 2 librerías de AutoML que han sido testeadas con el feature Covid que dota de una nueva dimensión a nuestros modelos. 
 
 ![conclusions1](Charts/conclusions1.PNG)
 
-Como podemos observar, el desempeño de la variable Covid no ha sido fructifero y ha terminado confundiendo a los modelos sin aportar el valor esperado, esto se debe a la falta de histórico que es un elemento clave en el ML. Recordemos que 9/10 años no disponen de datos Covid por lo que el feature ha computado un 0 en todos ellos y no ha sabido interpretar correctamente los valores del último año.
+Como podemos observar, el desempeño de la variable Covid no ha sido fructífero y ha terminado confundiendo a los modelos sin aportar el valor esperado, esto se debe a la falta de histórico que es un elemento clave en el ML. Recordemos que 9/10 años no disponen de datos Covid por lo que el feature ha computado un 0 en todos ellos y no ha sabido interpretar correctamente los valores del último año.
 
-En cuanto a las librerías MLJar ha proporcionado las predicciones más precisas excluyendo el feature de Covid, aunque también ha sido la peor computándolo. Por lo que no es posible concluir una mayor eficiencia. Ambas son librería robustas que ofrecerán un mejor o peor desempeño en función de la tipología de datos y los parametros usados. 
+En cuanto a las librerías MLJar ha proporcionado las predicciones más precisas excluyendo el feature de Covid, aunque también ha sido la peor computándolo. Por lo que no es posible concluir una mayor eficiencia. Ambas son librerías robustas que ofrecerán un mejor o peor desempeño en función de la tipología de datos y los parámetros usados. 
+
+Finalizando, las claves para una mejor precisión en nuestras proyecciones son:
+* mayor volumetría de datos mejorará el aprendizaje
+* alto nivel de agrupación ha reducido la variabilidad
+* mejor calidad en los features mejorará el modelado
+* controlar la dimensionalidad ha evitado el overfitting
 
 Por último, y respecto a lo observado en los análisis que hemos realizado sobre el historico de accidentes, podemos concluir que:
 
