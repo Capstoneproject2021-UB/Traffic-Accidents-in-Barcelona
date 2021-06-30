@@ -21,7 +21,7 @@ De acuerdo a la Organización Mundial de la Salud, como consecuencia de accident
 
 * Los accidentes son un riesgo muy superior para niños y jóvenes: Se trata de la primer causa de muerte en personas de entre 5 y 29 años.
 * La mitad de los accidentes ocurridos, tienen consecuencias sobre peatones, ciclistas y motociclistas.
-* Factores de riesgo: velocidad, conducción bajo los efectos del alcohol, no utilización de elementos de seguridad (cinturón de seguridad, casco, etc), conducción distraída e infraestructura vial insegura.
+* Factores de riesgo: exceso de velocidad, conducción bajo los efectos del alcohol, no utilización de elementos de seguridad (cinturón de seguridad, casco, etc), conducción distraída e infraestructura vial insegura.
 
 En el marco de la Unión Europea, en la actualidad se producen por año alrededor de 49 muertes por millón de habitantes, frente a las 174 por millón en el mundo.
 Si bien se trata del continente con menor siniestralidad en carreteras en el mundo, el objetivo para 2030 es reducir a la mitad el número de muertes y lesiones graves. 
