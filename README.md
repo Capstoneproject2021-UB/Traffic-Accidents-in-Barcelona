@@ -71,6 +71,12 @@ Ante la falta de datos de accidentalidad durante 2021, el modelo fue modificado 
 El primero es un registro con todas las personas que formaron parte en cada uno de los accidentes registrados. Por lo que podemos tener 1,2,3 o 4 filas correspondientes al mismo accidente. Todo depende del número de personas involucradas. Cada dataframe cuenta con 31 campos, entre los que se encuentran: fecha, barrio, descripción de la persona, edad, descripción del vehículo involucrado, entre otros. La clave principal es el número de expediente.
 El segundo es un resumen del accidente ocurrido y sus consecuencias. Cada dataframe cuenta con 26 campos, siendo los más importantes para nuestro análisis: número de lesionados leves, graves y muertos. La clave principal es el número de expediente.
 
+<br>
+
+![data](Charts/data.png)
+
+<br>
+
 Cada fichero corresponde a un dataframe por año, iniciando el registro en el año 2010 y finalizando en 2020. Concurrencia para las dos tipologías de fichero, por lo que hemos trabajado con un total de 20 archivos.
 Ambos datasets se han utilizado para el análisis exploratorio, pero solo el segundo para la elaboración del modelo. 
 
